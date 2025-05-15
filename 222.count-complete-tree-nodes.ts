@@ -78,6 +78,9 @@ function countNodes(root: TreeNode | null): number {
 	const leftHeight = getHeight(root.left);
 	const rightHeight = getHeight(root.right);
 
+	/** (1 << n) means 2^n (Math.pow(2, n) || 2 ** n) */
+	/** << more fast than Math.pow */
+
 	if (leftHeight === rightHeight) {
 		return (1 << leftHeight) + countNodes(root.right);
 	} else {
