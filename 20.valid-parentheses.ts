@@ -78,7 +78,7 @@ function isValid(s: string): boolean {
 
 	for (const char of s) {
 		if (char in map) {
-			const topElement = stack.length === 0 ? "" : stack.pop();
+			const topElement = stack.pop();
 			if (topElement !== map[char]) {
 				return false;
 			}
