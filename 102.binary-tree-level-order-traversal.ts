@@ -1,0 +1,90 @@
+/*
+ * @lc app=leetcode id=102 lang=typescript
+ *
+ * [102] Binary Tree Level Order Traversal
+ *
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+ *
+ * algorithms
+ * Medium (70.32%)
+ * Likes:    16149
+ * Dislikes: 346
+ * Total Accepted:    2.8M
+ * Total Submissions: 4M
+ * Testcase Example:  '[3,9,20,null,null,15,7]'
+ *
+ * Given the root of a binary tree, return the level order traversal of its
+ * nodes' values. (i.e., from left to right, level by level).
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: root = [3,9,20,null,null,15,7]
+ * Output: [[3],[9,20],[15,7]]
+ *
+ *
+ * Example 2:
+ *
+ *
+ * Input: root = [1]
+ * Output: [[1]]
+ *
+ *
+ * Example 3:
+ *
+ *
+ * Input: root = []
+ * Output: []
+ *
+ *
+ *
+ * Constraints:
+ *
+ *
+ * The number of nodes in the tree is in the range [0, 2000].
+ * -1000 <= Node.val <= 1000
+ *
+ *
+ */
+
+// @lc code=start
+/**
+ * Definition for a binary tree node.
+ */
+
+// class TreeNode {
+// 	val: number;
+// 	left: TreeNode | null;
+// 	right: TreeNode | null;
+// 	constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+// 		this.val = val === undefined ? 0 : val;
+// 		this.left = left === undefined ? null : left;
+// 		this.right = right === undefined ? null : right;
+// 	}
+// }
+
+function levelOrder(root: TreeNode | null): number[][] {
+	if (!root) return [];
+
+	const result: number[][] = [];
+	const queue: TreeNode[] = [root];
+
+	while (queue.length > 0) {
+		const levelSize = queue.length;
+		const currentLevel: number[] = [];
+
+		for (let i = 0; i < levelSize; i++) {
+			const currentNode = queue.shift()!;
+			currentLevel.push(currentNode.val);
+
+			if (currentNode.left) queue.push(currentNode.left);
+			if (currentNode.right) queue.push(currentNode.right);
+		}
+
+		result.push(currentLevel);
+	}
+
+	return result;
+}
+// @lc code=end
