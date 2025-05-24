@@ -67,7 +67,7 @@ class ListNode {
 
 // @lc code=start
 function reverseList(head: ListNode | null): ListNode | null {
-	if (!head || !head.next) return head;
+	if (!head?.next) return head;
 
 	const newHead = reverseList(head.next);
 
