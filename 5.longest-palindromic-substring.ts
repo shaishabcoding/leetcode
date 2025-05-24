@@ -46,17 +46,18 @@ function longestPalindrome(str: string): string {
 	let result = "";
 
 	for (let i = 0; i < str.length; i++) {
-		for (const j of [i, i + 1]) {
+		for (let j = 0; j < 2; j++) {
 			let left = i;
-			let right = j;
+			let right = i + j;
 
-			while (str[left] && str[left] === str[right]) {
-				left--;
-				right++;
+			while (str[left] === str[right]) {
+				if (right + 1 - left > result.length)
+					result = str.slice(left, right + 1);
+				if (--left < 0 || ++right >= str.length) break;
 			}
-
-			if (right - left - 1 > result.length) result = str.slice(left + 1, right);
 		}
+
+		if (str.length - i <= result.length / 2) break;
 	}
 
 	return result;
