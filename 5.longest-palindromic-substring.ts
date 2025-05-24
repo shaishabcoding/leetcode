@@ -42,21 +42,21 @@
  */
 
 // @lc code=start
-function longestPalindrome(s: string): string {
+function longestPalindrome(str: string): string {
 	let result = "";
 
-	for (let i = 0; i < s.length; i++) {
-		[i, i + 1].forEach((j) => {
+	for (let i = 0; i < str.length; i++) {
+		for (const j of [i, i + 1]) {
 			let left = i;
 			let right = j;
-			while (left >= 0 && right < s.length && s[left] === s[right]) {
-				if (right - left + 1 > result.length) {
-					result = s.slice(left, right + 1);
-				}
+
+			while (str[left] && str[left] === str[right]) {
 				left--;
 				right++;
 			}
-		});
+
+			if (right - left - 1 > result.length) result = str.slice(left + 1, right);
+		}
 	}
 
 	return result;
