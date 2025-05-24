@@ -48,26 +48,26 @@
  *
  */
 
-// @lc code=start
 /**
  * Definition for a binary tree node.
  */
 
-// class TreeNode {
-// 	val: number;
-// 	left: TreeNode | null;
-// 	right: TreeNode | null;
-// 	constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-// 		this.val = val === undefined ? 0 : val;
-// 		this.left = left === undefined ? null : left;
-// 		this.right = right === undefined ? null : right;
-// 	}
-// }
+class TreeNode {
+	val: number;
+	left: TreeNode | null;
+	right: TreeNode | null;
+	constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+		this.val = val === undefined ? 0 : val;
+		this.left = left === undefined ? null : left;
+		this.right = right === undefined ? null : right;
+	}
+}
 
+// @lc code=start
 function levelOrder(root: TreeNode | null): number[][] {
 	if (!root) return [];
 
-	const result: number[][] = [];
+	const totalLevel: number[][] = [];
 	const queue: TreeNode[] = [root];
 
 	while (queue.length > 0) {
@@ -82,9 +82,9 @@ function levelOrder(root: TreeNode | null): number[][] {
 			if (currentNode.right) queue.push(currentNode.right);
 		}
 
-		result.push(currentLevel);
+		totalLevel.push(currentLevel);
 	}
 
-	return result;
+	return totalLevel;
 }
 // @lc code=end
