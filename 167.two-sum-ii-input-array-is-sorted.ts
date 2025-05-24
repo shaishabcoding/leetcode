@@ -68,22 +68,15 @@
  */
 
 // @lc code=start
-function twoSum(numbers: number[], target: number): number[] {
-	let left = 0;
-	let right = numbers.length - 1;
+function twoSum(nums: number[], target: number): number[] {
+	const map = new Map<number, number>();
 
-	while (left < right) {
-		const sum = numbers[left] + numbers[right];
-
-		if (sum === target) {
-			return [left + 1, right + 1];
-		} else if (sum < target) {
-			left++;
-		} else {
-			right--;
-		}
+	for (let i = 0; i < nums.length; i++) {
+		const com = target - nums[i];
+		if (map.has(com)) return [map.get(com)! + 1, i + 1];
+		map.set(nums[i], i);
 	}
 
-	return [];
+	return [-1, -1];
 }
 // @lc code=end
