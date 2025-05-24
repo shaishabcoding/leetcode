@@ -64,13 +64,17 @@
 
 // @lc code=start
 function groupAnagrams(strs: string[]): string[][] {
-	const map: Map<string, string[]> = new Map();
+	const map = new Map<string, string[]>();
 
-	for (let str of strs) {
-		const key = str.split("").sort().join("");
+	for (const str of strs) {
+		const count = new Array(26).fill(0);
+		for (const ch of str) {
+			count[ch.charCodeAt(0) - 97]++;
+		}
 
-		if (map.has(key)) map.get(key)?.push(str);
-		else map.set(key, [str]);
+		const key = count.join(",");
+		if (!map.has(key)) map.set(key, [str]);
+		else map.get(key)?.push(str);
 	}
 
 	return Array.from(map.values());
