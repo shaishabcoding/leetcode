@@ -68,13 +68,15 @@ function groupAnagrams(strs: string[]): string[][] {
 
 	for (const str of strs) {
 		const count = new Array(26).fill(0);
-		for (const ch of str) {
-			count[ch.charCodeAt(0) - 97]++;
+
+		for (let i = 0; i < str.length; i++) {
+			count[str.charCodeAt(i) - 97]++;
 		}
 
-		const key = count.join(",");
-		if (!map.has(key)) map.set(key, [str]);
-		else map.get(key)?.push(str);
+		const key = count.join("#");
+
+		if (map.has(key)) map.get(key)?.push(str);
+		else map.set(key, [str]);
 	}
 
 	return Array.from(map.values());
