@@ -55,12 +55,12 @@
 
 // @lc code=start
 function maxProfit(prices: number[]): number {
-	let minPrice = Infinity;
-	let maxProfit = 0;
+	let minPrice = Infinity,
+		maxProfit = 0;
 
 	for (const price of prices) {
-		if (price < minPrice) minPrice = price;
-		else maxProfit = Math.max(price - minPrice, maxProfit);
+		minPrice = Math.min(minPrice, price);
+		maxProfit = Math.max(maxProfit, price - minPrice);
 	}
 
 	return maxProfit;
