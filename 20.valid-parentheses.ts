@@ -68,7 +68,7 @@
  */
 
 // @lc code=start
-function isValid(s: string): boolean {
+function isValid(str: string): boolean {
 	const stack: string[] = [];
 	const map = {
 		")": "(",
@@ -76,14 +76,12 @@ function isValid(s: string): boolean {
 		"]": "[",
 	};
 
-	for (const char of s) {
-		if (char in map) {
-			const topElement = stack.pop();
-			if (topElement !== map[char]) {
-				return false;
-			}
+	for (const ch of str) {
+		if (map[ch]) {
+			const top = stack.pop()!;
+			if (top !== map[ch]) return false;
 		} else {
-			stack.push(char);
+			stack.push(ch);
 		}
 	}
 
