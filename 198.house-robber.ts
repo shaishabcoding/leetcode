@@ -55,18 +55,15 @@
 
 // @lc code=start
 function rob(nums: number[]): number {
-	if (nums.length === 0) return 0;
-	if (nums.length === 1) return nums[0];
+	let p1 = 0;
+	let p2 = 0;
 
-	let prev1 = nums[0];
-	let prev2 = 0;
-
-	for (let i = 1; i < nums.length; i++) {
-		const current = Math.max(prev2 + nums[i], prev1);
-		prev2 = prev1;
-		prev1 = current;
+	for (const num of nums) {
+		const temp = p1;
+		p1 = Math.max(p1, p2 + num);
+		p2 = temp;
 	}
 
-	return prev1;
+	return p1;
 }
 // @lc code=end
