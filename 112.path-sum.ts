@@ -58,41 +58,26 @@
  *
  */
 
-// @lc code=start
 /**
  * Definition for a binary tree node.
  */
 
-// class TreeNode {
-// 	val: number;
-// 	left: TreeNode | null;
-// 	right: TreeNode | null;
-// 	constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-// 		this.val = val === undefined ? 0 : val;
-// 		this.left = left === undefined ? null : left;
-// 		this.right = right === undefined ? null : right;
-// 	}
-// }
+class TreeNode {
+	constructor(
+		public val = 0,
+		public left: TreeNode | null = null,
+		public right: TreeNode | null = null
+	) {}
+}
 
+// @lc code=start
 function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
-	if (root === null) return false;
+	if (!root) return false;
+	if (!root.left && !root.right) return targetSum === root.val;
 
-	function hasPath(node: TreeNode, remainingSum: number): boolean {
-		if (node.left === null && node.right === null) {
-			return remainingSum === node.val;
-		}
-
-		if (node.left !== null && hasPath(node.left, remainingSum - node.val)) {
-			return true;
-		}
-
-		if (node.right !== null && hasPath(node.right, remainingSum - node.val)) {
-			return true;
-		}
-
-		return false;
-	}
-
-	return hasPath(root, targetSum);
+	return (
+		hasPathSum(root.left, targetSum - root.val) ||
+		hasPathSum(root.right, targetSum - root.val)
+	);
 }
 // @lc code=end
