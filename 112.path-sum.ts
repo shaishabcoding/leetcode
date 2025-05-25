@@ -1,3 +1,5 @@
+import { TreeNode } from "./utils/TreeNode";
+
 /*
  * @lc app=leetcode id=112 lang=typescript
  *
@@ -57,18 +59,6 @@
  *
  *
  */
-
-/**
- * Definition for a binary tree node.
- */
-
-class TreeNode {
-	constructor(
-		public val = 0,
-		public left: TreeNode | null = null,
-		public right: TreeNode | null = null
-	) {}
-}
 
 // @lc code=start
 function hasPathSum(root: TreeNode | null, targetSum: number): boolean {

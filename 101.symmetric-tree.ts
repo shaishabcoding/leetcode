@@ -1,3 +1,5 @@
+import { TreeNode } from "./utils/TreeNode";
+
 /*
  * @lc app=leetcode id=101 lang=typescript
  *
@@ -42,21 +44,6 @@
  *
  * Follow up: Could you solve it both recursively and iteratively?
  */
-
-/**
- * Definition for a binary tree node.
- */
-
-class TreeNode {
-	val: number;
-	left: TreeNode | null;
-	right: TreeNode | null;
-	constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-		this.val = val === undefined ? 0 : val;
-		this.left = left === undefined ? null : left;
-		this.right = right === undefined ? null : right;
-	}
-}
 
 // @lc code=start
 function isMirror(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
