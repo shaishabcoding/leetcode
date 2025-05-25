@@ -1,5 +1,24 @@
 import { TreeNode } from "./utils/TreeNode";
 
+// @lc code=start
+function minDepth(root: TreeNode | null): number {
+	if (!root) return 0;
+	if (!root.left && !root.right) return 1;
+	if (!root.left) return minDepth(root.right) + 1;
+	if (!root.right) return minDepth(root.left) + 1;
+
+	return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+}
+// @lc code=end
+
+console.log(minDepth(TreeNode.fromArray([3, 9, 20, null, null, 15, 7]))); // 2
+console.log(
+	minDepth(TreeNode.fromArray([2, null, 3, null, 4, null, 5, null, 6]))
+); // 5
+console.log(minDepth(null)); // 0
+console.log(minDepth(TreeNode.fromArray([1]))); // 1
+console.log(minDepth(TreeNode.fromArray([]))); // 0
+
 /*
  * @lc app=leetcode id=111 lang=typescript
  *
@@ -46,14 +65,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  *
  */
-
-// @lc code=start
-function minDepth(root: TreeNode | null): number {
-	if (!root) return 0;
-	if (!root.left && !root.right) return 1;
-	if (!root.left) return minDepth(root.right) + 1;
-	if (!root.right) return minDepth(root.left) + 1;
-
-	return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
-}
-// @lc code=end

@@ -1,3 +1,36 @@
+// @lc code=start
+function mySqrt(x: number): number {
+	if (x < 2) return x;
+
+	let left = 1;
+	let right = x;
+
+	let result = 1;
+
+	while (left <= right) {
+		const mid = Math.floor((left + right) / 2);
+
+		const square = mid * mid;
+
+		if (square === x) return mid;
+		if (square < x) {
+			result = mid;
+			left = mid + 1;
+		} else {
+			right = mid - 1;
+		}
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(mySqrt(4)); // 2
+console.log(mySqrt(8)); // 2
+console.log(mySqrt(9)); // 3
+console.log(mySqrt(10)); // 3
+console.log(mySqrt(11)); // 3
+
 /*
  * @lc app=leetcode id=69 lang=typescript
  *
@@ -48,30 +81,3 @@
  *
  *
  */
-
-// @lc code=start
-function mySqrt(x: number): number {
-	if (x < 2) return x;
-
-	let left = 1;
-	let right = x;
-
-	let result = 1;
-
-	while (left <= right) {
-		const mid = Math.floor((left + right) / 2);
-
-		const square = mid * mid;
-
-		if (square === x) return mid;
-		if (square < x) {
-			result = mid;
-			left = mid + 1;
-		} else {
-			right = mid - 1;
-		}
-	}
-
-	return result;
-}
-// @lc code=end

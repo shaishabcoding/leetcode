@@ -1,3 +1,23 @@
+// @lc code=start
+function maxSubArray(nums: number[]): number {
+	let max = -Infinity,
+		sum = 0;
+
+	for (const num of nums) {
+		sum = Math.max(num, sum + num);
+		max = Math.max(max, sum);
+	}
+
+	return max;
+}
+// @lc code=end
+
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
+console.log(maxSubArray([1])); // 1
+console.log(maxSubArray([5, 4, -1, 7, 8])); // 23
+console.log(maxSubArray([-1, -2, -3, -4, -5])); // -1
+console.log(maxSubArray([-2, 1])); // 1
+
 /*
  * @lc app=leetcode id=53 lang=typescript
  *
@@ -54,17 +74,3 @@
  * solution using the divide and conquer approach, which is more subtle.
  *
  */
-
-// @lc code=start
-function maxSubArray(nums: number[]): number {
-	let max = -Infinity,
-		sum = 0;
-
-	for (const num of nums) {
-		sum = Math.max(num, sum + num);
-		max = Math.max(max, sum);
-	}
-
-	return max;
-}
-// @lc code=end

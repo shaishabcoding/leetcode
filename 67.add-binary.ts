@@ -1,3 +1,31 @@
+// @lc code=start
+function addBinary(a: string, b: string): string {
+	let result = "";
+	let carry = 0;
+
+	let aLen = a.length;
+	let bLen = b.length;
+
+	while (aLen > 0 || bLen > 0 || carry) {
+		const bitA = aLen > 0 ? +a[--aLen] : 0;
+		const bitB = bLen > 0 ? +b[--bLen] : 0;
+
+		const sum = bitA + bitB + carry;
+
+		result = (sum % 2) + result;
+		carry = sum > 1 ? 1 : 0;
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(addBinary("11", "1")); // "100"
+console.log(addBinary("1010", "1011")); // "10101"
+console.log(addBinary("1", "1")); // "10"
+console.log(addBinary("0", "0")); // "0"
+console.log(addBinary("0", "1")); // "1"
+
 /*
  * @lc app=leetcode id=67 lang=typescript
  *
@@ -33,25 +61,3 @@
  *
  *
  */
-
-// @lc code=start
-function addBinary(a: string, b: string): string {
-	let result = "";
-	let carry = 0;
-
-	let aLen = a.length;
-	let bLen = b.length;
-
-	while (aLen > 0 || bLen > 0 || carry) {
-		const bitA = aLen > 0 ? +a[--aLen] : 0;
-		const bitB = bLen > 0 ? +b[--bLen] : 0;
-
-		const sum = bitA + bitB + carry;
-
-		result = (sum % 2) + result;
-		carry = sum > 1 ? 1 : 0;
-	}
-
-	return result;
-}
-// @lc code=end

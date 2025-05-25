@@ -1,5 +1,25 @@
 import { TreeNode } from "./utils/TreeNode";
 
+// @lc code=start
+function sortedArrayToBST(nums: number[]): TreeNode | null {
+	if (nums.length === 0) return null;
+
+	const mid = Math.floor(nums.length / 2);
+	const root = new TreeNode(nums[mid]);
+
+	root.left = sortedArrayToBST(nums.slice(0, mid));
+	root.right = sortedArrayToBST(nums.slice(mid + 1));
+
+	return root;
+}
+// @lc code=end
+
+console.log(sortedArrayToBST([-10, -3, 0, 5, 9])); // [0,-3,9,-10,null,5]
+console.log(sortedArrayToBST([1, 3])); // [3,1]
+console.log(sortedArrayToBST([])); // null
+console.log(sortedArrayToBST([1])); // [1]
+console.log(sortedArrayToBST([1, 2])); // [2,1]
+
 /*
  * @lc app=leetcode id=108 lang=typescript
  *
@@ -46,17 +66,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  *
  */
-
-// @lc code=start
-function sortedArrayToBST(nums: number[]): TreeNode | null {
-	if (nums.length === 0) return null;
-
-	const mid = Math.floor(nums.length / 2);
-	const root = new TreeNode(nums[mid]);
-
-	root.left = sortedArrayToBST(nums.slice(0, mid));
-	root.right = sortedArrayToBST(nums.slice(mid + 1));
-
-	return root;
-}
-// @lc code=end

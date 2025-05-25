@@ -1,3 +1,24 @@
+// @lc code=start
+function climbStairs(n: number): number {
+	let first = 1,
+		second = 1;
+
+	while (n--) {
+		const temp = second;
+		second += first;
+		first = temp;
+	}
+
+	return first;
+}
+// @lc code=end
+
+console.log(climbStairs(2)); // 2
+console.log(climbStairs(3)); // 3
+console.log(climbStairs(4)); // 5
+console.log(climbStairs(5)); // 8
+console.log(climbStairs(6)); // 13
+
 /*
  * @lc app=leetcode id=70 lang=typescript
  *
@@ -48,18 +69,3 @@
  *
  *
  */
-
-// @lc code=start
-function climbStairs(n: number): number {
-	let first = 1,
-		second = 1;
-
-	while (n--) {
-		const temp = second;
-		second += first;
-		first = temp;
-	}
-
-	return first;
-}
-// @lc code=end

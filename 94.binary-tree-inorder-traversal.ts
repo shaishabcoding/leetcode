@@ -1,5 +1,26 @@
 import { TreeNode } from "./utils/TreeNode";
 
+// @lc code=start
+function inorderTraversal(root: TreeNode | null): number[] {
+	if (!root) return [];
+	return [
+		...inorderTraversal(root.left),
+		root.val,
+		...inorderTraversal(root.right),
+	];
+}
+// @lc code=end
+
+console.log(inorderTraversal(TreeNode.fromArray([1, null, 2, 3]))); // [1,3,2]
+console.log(
+	inorderTraversal(
+		TreeNode.fromArray([1, 2, 3, 4, 5, null, 8, null, null, 6, 7, 9])
+	)
+); // [4,2,6,5,7,1,3,9,8]
+console.log(inorderTraversal(TreeNode.fromArray([]))); // []
+console.log(inorderTraversal(TreeNode.fromArray([1]))); // [1]
+console.log(inorderTraversal(null)); // []
+
 /*
  * @lc app=leetcode id=94 lang=typescript
  *
@@ -70,14 +91,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  * Follow up: Recursive solution is trivial, could you do it iteratively?
  */
-
-// @lc code=start
-function inorderTraversal(root: TreeNode | null): number[] {
-	if (!root) return [];
-	return [
-		...inorderTraversal(root.left),
-		root.val,
-		...inorderTraversal(root.right),
-	];
-}
-// @lc code=end

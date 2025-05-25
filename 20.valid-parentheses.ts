@@ -1,3 +1,31 @@
+// @lc code=start
+function isValid(str: string): boolean {
+	const stack: string[] = [];
+	const map: Record<string, string> = {
+		")": "(",
+		"}": "{",
+		"]": "[",
+	};
+
+	for (const ch of str) {
+		if (map[ch]) {
+			const top = stack.pop()!;
+			if (top !== map[ch]) return false;
+		} else {
+			stack.push(ch);
+		}
+	}
+
+	return stack.length === 0;
+}
+// @lc code=end
+
+console.log(isValid("()")); // true
+console.log(isValid("()[]{}")); // true
+console.log(isValid("(]")); // false
+console.log(isValid("([])")); // true
+console.log(isValid("{[]}")); // true
+
 /*
  * @lc app=leetcode id=20 lang=typescript
  *
@@ -66,25 +94,3 @@
  *
  *
  */
-
-// @lc code=start
-function isValid(str: string): boolean {
-	const stack: string[] = [];
-	const map = {
-		")": "(",
-		"}": "{",
-		"]": "[",
-	};
-
-	for (const ch of str) {
-		if (map[ch]) {
-			const top = stack.pop()!;
-			if (top !== map[ch]) return false;
-		} else {
-			stack.push(ch);
-		}
-	}
-
-	return stack.length === 0;
-}
-// @lc code=end

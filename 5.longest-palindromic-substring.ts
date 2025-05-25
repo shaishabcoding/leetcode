@@ -1,3 +1,32 @@
+// @lc code=start
+function longestPalindrome(str: string): string {
+	let result = "";
+
+	for (let i = 0; i < str.length; i++) {
+		for (let j = 0; j < 2; j++) {
+			let left = i;
+			let right = i + j;
+
+			while (str[left] === str[right]) {
+				if (right + 1 - left > result.length)
+					result = str.slice(left, right + 1);
+				if (--left < 0 || ++right >= str.length) break;
+			}
+		}
+
+		if (str.length - i <= result.length / 2) break;
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(longestPalindrome("babad")); // "bab"
+console.log(longestPalindrome("cbbd")); // "bb"
+console.log(longestPalindrome("a")); // "a"
+console.log(longestPalindrome("ac")); // "a"
+console.log(longestPalindrome("bb")); // "bb"
+
 /*
  * @lc app=leetcode id=5 lang=typescript
  *
@@ -40,26 +69,3 @@
  *
  *
  */
-
-// @lc code=start
-function longestPalindrome(str: string): string {
-	let result = "";
-
-	for (let i = 0; i < str.length; i++) {
-		for (let j = 0; j < 2; j++) {
-			let left = i;
-			let right = i + j;
-
-			while (str[left] === str[right]) {
-				if (right + 1 - left > result.length)
-					result = str.slice(left, right + 1);
-				if (--left < 0 || ++right >= str.length) break;
-			}
-		}
-
-		if (str.length - i <= result.length / 2) break;
-	}
-
-	return result;
-}
-// @lc code=end

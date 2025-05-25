@@ -1,5 +1,17 @@
 import { TreeNode } from "./utils/TreeNode";
 
+// @lc code=start
+function maxDepth(root: TreeNode | null): number {
+	return !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+}
+// @lc code=end
+
+console.log(maxDepth(TreeNode.fromArray([3, 9, 20, null, null, 15, 7]))); // 3
+console.log(maxDepth(TreeNode.fromArray([1, null, 2]))); // 2
+console.log(maxDepth(null)); // 0
+console.log(maxDepth(TreeNode.fromArray([]))); // 0
+console.log(maxDepth(TreeNode.fromArray([0]))); // 1
+
 /*
  * @lc app=leetcode id=104 lang=typescript
  *
@@ -44,9 +56,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  *
  */
-
-// @lc code=start
-function maxDepth(root: TreeNode | null): number {
-	return !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
-}
-// @lc code=end

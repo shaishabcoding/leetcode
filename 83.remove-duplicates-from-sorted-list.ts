@@ -1,3 +1,21 @@
+import { ListNode } from "./utils/ListNode";
+
+// @lc code=start
+function deleteDuplicates(head: ListNode | null): ListNode | null {
+	if (!head?.next) return head;
+
+	head.next = deleteDuplicates(head.next);
+
+	return head.val === head.next?.val ? head.next : head;
+}
+// @lc code=end
+
+console.log(deleteDuplicates(ListNode.fromArray([1, 1, 2, 3, 3]))); // [1,2,3]
+console.log(deleteDuplicates(ListNode.fromArray([1, 1, 2, 3, 3, 3]))); // [1,2,3]
+console.log(deleteDuplicates(ListNode.fromArray([1, 2, 3, 3, 4, 4, 5]))); // [1,2,3,4,5]
+console.log(deleteDuplicates(ListNode.fromArray([1, 2, 3, 3, 4, 4, 5, 5]))); // [1,2,3,4,5]
+console.log(deleteDuplicates(ListNode.fromArray([1, 2, 3, 3, 4, 4, 5, 5, 5]))); // [1,2,3,4,5]
+
 /*
  * @lc app=leetcode id=83 lang=typescript
  *
@@ -41,26 +59,3 @@
  *
  *
  */
-
-// @lc code=start
-/**
- * Definition for singly-linked list.
- */
-
-// class ListNode {
-// 	val: number;
-// 	next: ListNode | null;
-// 	constructor(val?: number, next?: ListNode | null) {
-// 		this.val = val === undefined ? 0 : val;
-// 		this.next = next === undefined ? null : next;
-// 	}
-// }
-
-function deleteDuplicates(head: ListNode | null): ListNode | null {
-  if(!head?.next) return head;
-
-  head.next = deleteDuplicates(head.next);
-  
-  return head.val === head.next?.val ? head.next : head;
-}
-// @lc code=end

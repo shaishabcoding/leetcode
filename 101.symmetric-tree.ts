@@ -1,5 +1,30 @@
 import { TreeNode } from "./utils/TreeNode";
 
+// @lc code=start
+function isMirror(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
+	if (!tree1 && !tree2) return true;
+	if (!tree1 || !tree2) return false;
+
+	return (
+		tree1.val === tree2.val &&
+		isMirror(tree1.left, tree2.right) &&
+		isMirror(tree1.right, tree2.left)
+	);
+}
+
+function isSymmetric(root: TreeNode | null): boolean {
+	if (!root) return true;
+
+	return isMirror(root.left, root.right);
+}
+// @lc code=end
+
+console.log(isSymmetric(TreeNode.fromArray([1, 2, 2, 3, 4, 4, 3]))); // true
+console.log(isSymmetric(TreeNode.fromArray([1, 2, 2, null, 3, null, 3]))); // false
+console.log(isSymmetric(null)); // true
+console.log(isSymmetric(TreeNode.fromArray([1]))); // true
+console.log(isSymmetric(TreeNode.fromArray([1, 2]))); // false
+
 /*
  * @lc app=leetcode id=101 lang=typescript
  *
@@ -44,22 +69,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  * Follow up: Could you solve it both recursively and iteratively?
  */
-
-// @lc code=start
-function isMirror(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
-	if (!tree1 && !tree2) return true;
-	if (!tree1 || !tree2) return false;
-
-	return (
-		tree1.val === tree2.val &&
-		isMirror(tree1.left, tree2.right) &&
-		isMirror(tree1.right, tree2.left)
-	);
-}
-
-function isSymmetric(root: TreeNode | null): boolean {
-	if (!root) return true;
-
-	return isMirror(root.left, root.right);
-}
-// @lc code=end
