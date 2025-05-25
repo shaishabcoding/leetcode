@@ -1,3 +1,21 @@
+// @lc code=start
+function minimumOperations(nums: number[]): number {
+	let count = 0;
+	for (const num of nums) {
+		if (num % 3 !== 0) {
+			count++;
+		}
+	}
+	return count;
+}
+// @lc code=end
+
+console.log(minimumOperations([1, 2, 3, 4])); // 3
+console.log(minimumOperations([3, 6, 9])); // 0
+console.log(minimumOperations([1, 2, 3])); // 0
+console.log(minimumOperations([2, 4, 8])); // 2
+console.log(minimumOperations([1, 2, 3, 4, 5, 6])); // 3
+
 /*
  * @lc app=leetcode id=3190 lang=typescript
  *
@@ -55,15 +73,3 @@
  *
  *
  */
-
-// @lc code=start
-function minimumOperations(nums: number[]): number {
-	let count = 0;
-	for (const num of nums) {
-		if (num % 3 !== 0) {
-			count++;
-		}
-	}
-	return count;
-}
-// @lc code=end

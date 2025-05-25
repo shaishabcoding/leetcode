@@ -1,3 +1,21 @@
+// @lc code=start
+function tribonacci(n: number): number {
+	const memo: number[] = [0, 1, 1];
+
+	for (let i = 3; i <= n; i++) {
+		memo[i] = memo[i - 1] + memo[i - 2] + memo[i - 3];
+	}
+
+	return memo[n];
+}
+// @lc code=end
+
+console.log(tribonacci(4)); // 4
+console.log(tribonacci(25)); // 1389537
+console.log(tribonacci(37)); // 24157817
+console.log(tribonacci(0)); // 0
+console.log(tribonacci(1)); // 1
+
 /*
  * @lc app=leetcode id=1137 lang=typescript
  *
@@ -47,15 +65,3 @@
  *
  *
  */
-
-// @lc code=start
-function tribonacci(n: number): number {
-	const memo: number[] = [0, 1, 1];
-
-	for (let i = 3; i <= n; i++) {
-		memo[i] = memo[i - 1] + memo[i - 2] + memo[i - 3];
-	}
-
-	return memo[n];
-}
-// @lc code=end

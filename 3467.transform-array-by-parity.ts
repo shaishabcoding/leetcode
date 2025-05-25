@@ -1,3 +1,15 @@
+// @lc code=start
+function transformArray(nums: number[]): number[] {
+	return nums.map((num) => num % 2).sort((a, b) => a - b);
+}
+// @lc code=end
+
+console.log(transformArray([4, 3, 2, 1])); // [0,0,1,1]
+console.log(transformArray([1, 5, 1, 4, 2])); // [0,0,1,1,1]
+console.log(transformArray([2, 4, 6])); // [0,0,1]
+console.log(transformArray([2, 4, 6, 8])); // [0,0,1,1]
+console.log(transformArray([2, 4, 6, 8, 10])); // [0,0,1,1,1]
+
 /*
  * @lc app=leetcode id=3467 lang=typescript
  *
@@ -66,9 +78,3 @@
  *
  *
  */
-
-// @lc code=start
-function transformArray(nums: number[]): number[] {
-	return nums.map((num) => num % 2).sort((a, b) => a - b);
-}
-// @lc code=end

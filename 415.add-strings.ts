@@ -1,3 +1,29 @@
+// @lc code=start
+function addStrings(num1: string, num2: string): string {
+	let curry = 0;
+	let result = "";
+
+	for (
+		let i = num1.length - 1, j = num2.length - 1;
+		i >= 0 || j >= 0;
+		i--, j--
+	) {
+		const sum = +(num1[i] ?? 0) + +(num2[j] ?? 0) + curry;
+
+		result = (sum % 10) + result;
+		curry = Math.floor(sum / 10);
+	}
+
+	return (curry || "") + result;
+}
+// @lc code=end
+
+console.log(addStrings("11", "123")); // "134"
+console.log(addStrings("456", "77")); // "533"
+console.log(addStrings("0", "0")); // "0"
+console.log(addStrings("9", "99")); // "108"
+console.log(addStrings("99", "9")); // "108"
+
 /*
  * @lc app=leetcode id=415 lang=typescript
  *
@@ -52,23 +78,3 @@
  *
  *
  */
-
-// @lc code=start
-function addStrings(num1: string, num2: string): string {
-	let curry = 0;
-	let result = "";
-
-	for (
-		let i = num1.length - 1, j = num2.length - 1;
-		i >= 0 || j >= 0;
-		i--, j--
-	) {
-		const sum = +(num1[i] ?? 0) + +(num2[j] ?? 0) + curry;
-
-		result = (sum % 10) + result;
-		curry = Math.floor(sum / 10);
-	}
-
-	return (curry || "") + result;
-}
-// @lc code=end

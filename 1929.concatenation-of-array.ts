@@ -1,3 +1,15 @@
+// @lc code=start
+function getConcatenation(nums: number[]): number[] {
+	return nums.concat(nums);
+}
+// @lc code=end
+
+console.log(getConcatenation([1, 2, 1])); // [1,2,1,1,2,1]
+console.log(getConcatenation([1, 3, 2, 1])); // [1,3,2,1,1,3,2,1]
+console.log(getConcatenation([4, 5, 6])); // [4,5,6,4,5,6]
+console.log(getConcatenation([7, 8, 9, 10])); // [7,8,9,10,7,8,9,10]
+console.log(getConcatenation([11, 12, 13, 14, 15])); // [11,12,13,14,15,11,12,13,14,15]
+
 /*
  * @lc app=leetcode id=1929 lang=typescript
  *
@@ -51,9 +63,3 @@
  *
  *
  */
-
-// @lc code=start
-function getConcatenation(nums: number[]): number[] {
-	return nums.concat(nums);
-}
-// @lc code=end

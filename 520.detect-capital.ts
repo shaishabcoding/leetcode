@@ -1,3 +1,22 @@
+// @lc code=start
+function detectCapitalUse(word: string): boolean {
+	const isAllUppercase = word === word.toUpperCase();
+	const isAllLowercase = word === word.toLowerCase();
+
+	const isFirstUpperRestLowercase =
+		word[0] === word[0].toUpperCase() &&
+		word.slice(1) === word.slice(1).toLowerCase();
+
+	return isAllUppercase || isAllLowercase || isFirstUpperRestLowercase;
+}
+// @lc code=end
+
+console.log(detectCapitalUse("USA")); // true
+console.log(detectCapitalUse("FlaG")); // false
+console.log(detectCapitalUse("leetcode")); // true
+console.log(detectCapitalUse("Google")); // true
+console.log(detectCapitalUse("Shaishab")); // true
+
 /*
  * @lc app=leetcode id=520 lang=typescript
  *
@@ -41,16 +60,3 @@
  *
  *
  */
-
-// @lc code=start
-function detectCapitalUse(word: string): boolean {
-	const isAllUppercase = word === word.toUpperCase();
-	const isAllLowercase = word === word.toLowerCase();
-
-	const isFirstUpperRestLowercase =
-		word[0] === word[0].toUpperCase() &&
-		word.slice(1) === word.slice(1).toLowerCase();
-
-	return isAllUppercase || isAllLowercase || isFirstUpperRestLowercase;
-}
-// @lc code=end

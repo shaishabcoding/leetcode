@@ -1,3 +1,15 @@
+// @lc code=start
+function convertTemperature(celsius: number): number[] {
+	return [celsius + 273.15, celsius * 1.8 + 32.0];
+}
+// @lc code=end
+
+console.log(convertTemperature(36.5)); // [309.65,97.7]
+console.log(convertTemperature(122.11)); // [395.26,251.798]
+console.log(convertTemperature(100)); // [373.15,212.0]
+console.log(convertTemperature(0)); // [273.15,32.0]
+console.log(convertTemperature(-40)); // [233.15,-40.0]
+
 /*
  * @lc app=leetcode id=2469 lang=typescript
  *
@@ -56,9 +68,3 @@
  *
  *
  */
-
-// @lc code=start
-function convertTemperature(celsius: number): number[] {
-	return [celsius + 273.15, celsius * 1.8 + 32.0];
-}
-// @lc code=end

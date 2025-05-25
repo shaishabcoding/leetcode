@@ -1,3 +1,16 @@
+// @lc code=start
+function countSegments(s: string): number {
+	s = s.replace(/\s+/g, " ");
+	return s.split(" ").filter(Boolean).length;
+}
+// @lc code=end
+
+console.log(countSegments("Hello, my name is John")); // 5
+console.log(countSegments("Hello")); // 1
+console.log(countSegments("")); // 0
+console.log(countSegments("   ")); // 0
+console.log(countSegments("One, two, three, four, five.")); // 5
+
 /*
  * @lc app=leetcode id=434 lang=typescript
  *
@@ -44,10 +57,3 @@
  *
  *
  */
-
-// @lc code=start
-function countSegments(s: string): number {
-	s = s.replace(/\s+/g, " ");
-	return s.split(" ").filter(Boolean).length;
-}
-// @lc code=end

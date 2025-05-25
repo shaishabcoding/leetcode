@@ -1,3 +1,23 @@
+// @lc code=start
+function runningSum(nums: number[]): number[] {
+	const result: number[] = [];
+
+	let sum = 0;
+	for (const num of nums) {
+		sum += num;
+		result.push(sum);
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(runningSum([1, 2, 3, 4])); // [1,3,6,10]
+console.log(runningSum([1, 1, 1, 1, 1])); // [1,2,3,4,5]
+console.log(runningSum([3, 1, 2, 10, 1])); // [3,4,6,16,17]
+console.log(runningSum([-1, -2, -3, -4])); // [-1,-3,-6,-10]
+console.log(runningSum([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])); // [1,2,3,4,5,6,7,8,9,10]
+
 /*
  * @lc app=leetcode id=1480 lang=typescript
  *
@@ -50,17 +70,3 @@
  *
  *
  */
-
-// @lc code=start
-function runningSum(nums: number[]): number[] {
-	const result: number[] = [];
-
-	let sum = 0;
-	for (const num of nums) {
-		sum += num;
-		result.push(sum);
-	}
-
-	return result;
-}
-// @lc code=end

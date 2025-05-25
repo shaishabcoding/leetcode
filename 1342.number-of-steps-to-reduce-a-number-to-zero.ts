@@ -1,3 +1,26 @@
+// @lc code=start
+function numberOfSteps(num: number): number {
+	let step = 0;
+
+	while (num > 0) {
+		if (num % 2 === 0) {
+			num /= 2;
+		} else {
+			num -= 1;
+		}
+		step++;
+	}
+
+	return step;
+}
+// @lc code=end
+
+console.log(numberOfSteps(14)); // 6
+console.log(numberOfSteps(8)); // 4
+console.log(numberOfSteps(123)); // 12
+console.log(numberOfSteps(0)); // 0
+console.log(numberOfSteps(1)); // 1
+
 /*
  * @lc app=leetcode id=1342 lang=typescript
  *
@@ -60,20 +83,3 @@
  *
  *
  */
-
-// @lc code=start
-function numberOfSteps(num: number): number {
-	let step = 0;
-
-	while (num > 0) {
-		if (num % 2 === 0) {
-			num /= 2;
-		} else {
-			num -= 1;
-		}
-		step++;
-	}
-
-	return step;
-}
-// @lc code=end

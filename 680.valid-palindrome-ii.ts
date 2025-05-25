@@ -1,3 +1,38 @@
+// @lc code=start
+function validPalindrome(s: string): boolean {
+	let left = 0;
+	let right = s.length - 1;
+
+	function isPalindrome(s: string, left: number, right: number): boolean {
+		while (left < right) {
+			if (s[left] !== s[right]) return false;
+			left++;
+			right--;
+		}
+
+		return true;
+	}
+
+	while (left < right) {
+		if (s[left] !== s[right]) {
+			return (
+				isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1)
+			);
+		}
+		left++;
+		right--;
+	}
+
+	return true;
+}
+// @lc code=end
+
+console.log(validPalindrome("aba")); // true
+console.log(validPalindrome("abca")); // true
+console.log(validPalindrome("abc")); // false
+console.log(validPalindrome("a")); // true
+console.log(validPalindrome("aa")); // true
+
 /*
  * @lc app=leetcode id=680 lang=typescript
  *
@@ -48,32 +83,3 @@
  *
  *
  */
-
-// @lc code=start
-function validPalindrome(s: string): boolean {
-	let left = 0;
-	let right = s.length - 1;
-
-	function isPalindrome(s: string, left: number, right: number): boolean {
-		while (left < right) {
-			if (s[left] !== s[right]) return false;
-			left++;
-			right--;
-		}
-
-		return true;
-	}
-
-	while (left < right) {
-		if (s[left] !== s[right]) {
-			return (
-				isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1)
-			);
-		}
-		left++;
-		right--;
-	}
-
-	return true;
-}
-// @lc code=end

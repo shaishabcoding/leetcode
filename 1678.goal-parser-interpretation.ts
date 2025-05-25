@@ -1,3 +1,15 @@
+// @lc code=start
+function interpret(command: string): string {
+	return command.replace(/\(\)/g, "o").replace(/\(al\)/g, "al");
+}
+// @lc code=end
+
+console.log(interpret("G()(al)")); // Goal
+console.log(interpret("G()()()()")); // Goooo
+console.log(interpret("(al)G(al)()()G")); // alGalooG
+console.log(interpret("G()()()()")); // Goooo
+console.log(interpret("(al)G(al)()()G")); // alGalooG
+
 /*
  * @lc app=leetcode id=1678 lang=typescript
  *
@@ -58,9 +70,3 @@
  *
  *
  */
-
-// @lc code=start
-function interpret(command: string): string {
-	return command.replace(/\(\)/g, "o").replace(/\(al\)/g, "al");
-}
-// @lc code=end

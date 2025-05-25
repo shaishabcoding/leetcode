@@ -1,3 +1,28 @@
+import { TreeNode } from "./utils";
+
+// @lc code=start
+function diameterOfBinaryTree(root: TreeNode | null, max?: [number]): number {
+	if (!root) return 0;
+
+	const isRoot = !max;
+	max ??= [0];
+
+	const left = diameterOfBinaryTree(root.left, max);
+	const right = diameterOfBinaryTree(root.right, max);
+
+	if (isRoot) return Math.max(left + right, max[0]);
+
+	max[0] = Math.max(left + right, max[0]);
+	return Math.max(left, right) + 1;
+}
+// @lc code=end
+
+console.log(TreeNode.fromArray([1, 2, 3, 4, 5])); // 3
+console.log(diameterOfBinaryTree(TreeNode.fromArray([1, 2, 3, 4, 5]))); // 3
+console.log(diameterOfBinaryTree(TreeNode.fromArray([1, 2]))); // 1
+console.log(diameterOfBinaryTree(null)); // 0
+console.log(diameterOfBinaryTree(TreeNode.fromArray([1]))); // 0
+
 /*
  * @lc app=leetcode id=543 lang=typescript
  *
@@ -47,30 +72,3 @@
  *
  *
  */
-
-// @lc code=start
-function diameterOfBinaryTree(root: TreeNode | null, max?: [number]): number {
-	if (!root) return 0;
-
-	const isRoot = !max;
-	max ??= [0];
-
-	const left = diameterOfBinaryTree(root.left, max);
-	const right = diameterOfBinaryTree(root.right, max);
-
-	if (isRoot) return Math.max(left + right, max[0]);
-
-	max[0] = Math.max(left + right, max[0]);
-	return Math.max(left, right) + 1;
-}
-// @lc code=end
-
-console.log(
-	diameterOfBinaryTree(
-		new TreeNode(
-			1,
-			new TreeNode(2, new TreeNode(4), new TreeNode(5)),
-			new TreeNode(3)
-		)
-	)
-); // 3

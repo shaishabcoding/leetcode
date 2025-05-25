@@ -1,3 +1,21 @@
+// @lc code=start
+function findWordsContaining(words: string[], x: string): number[] {
+	const result: number[] = [];
+	for (let i = 0; i < words.length; i++) {
+		if (words[i].includes(x)) {
+			result.push(i);
+		}
+	}
+	return result;
+}
+// @lc code=end
+
+console.log(findWordsContaining(["leet", "code"], "e")); // [0,1]
+console.log(findWordsContaining(["abc", "bcd", "aaaa", "cbc"], "a")); // [0,2]
+console.log(findWordsContaining(["abc", "bcd", "aaaa", "cbc"], "z")); // []
+console.log(findWordsContaining(["abc", "bcd", "aaaa", "cbc"], "b")); // [1,3]
+console.log(findWordsContaining(["abc", "bcd", "aaaa", "cbc"], "c")); // [2,3]
+
 /*
  * @lc app=leetcode id=2942 lang=typescript
  *
@@ -59,15 +77,3 @@
  *
  *
  */
-
-// @lc code=start
-function findWordsContaining(words: string[], x: string): number[] {
-	const result: number[] = [];
-	for (let i = 0; i < words.length; i++) {
-		if (words[i].includes(x)) {
-			result.push(i);
-		}
-	}
-	return result;
-}
-// @lc code=end

@@ -1,3 +1,60 @@
+// @lc code=start
+function numUniqueEmails(emails: string[]): number {
+	return new Set(
+		emails.map(
+			(email) =>
+				email.split("+")[0].split("@")[0].replace(/\./g, "") +
+				"@" +
+				email.split("@")[1]
+		)
+	).size;
+}
+// @lc code=end
+
+console.log(
+	numUniqueEmails([
+		"test.email+alex@leetcode.com",
+		"test.e.mail+bob.cathy@leetcode.com",
+		"testemail+david@lee.tcode.com",
+	])
+); // 2
+
+console.log(
+	numUniqueEmails(["a@leetcode.com", "b@leetcode.com", "c@leetcode.com"])
+); // 3
+
+console.log(
+	numUniqueEmails([
+		"unique.email+test@domain.com",
+		"unique.e.mail+test@domain.com",
+		"unique.email@domain.com",
+	])
+); // 1
+
+console.log(
+	numUniqueEmails([
+		"example+test@leetcode.com",
+		"example@leetcode.com",
+		"ex.ample@leetcode.com",
+	])
+); // 1
+
+console.log(
+	numUniqueEmails([
+		"first.email+alex@leetcode.com",
+		"second.email+alex@leetcode.com",
+		"third.email@leetcode.com",
+	])
+); // 3
+
+console.log(
+	numUniqueEmails([
+		"simple.email+alex@leetcode.com",
+		"simple.email@leetcode.com",
+		"simple.e.mail@leetcode.com",
+	])
+); // 1
+
 /*
  * @lc app=leetcode id=929 lang=typescript
  *
@@ -78,16 +135,3 @@
  *
  *
  */
-
-// @lc code=start
-function numUniqueEmails(emails: string[]): number {
-	return new Set(
-		emails.map(
-			(email) =>
-				email.split("+")[0].split("@")[0].replace(/\./g, "") +
-				"@" +
-				email.split("@")[1]
-		)
-	).size;
-}
-// @lc code=end

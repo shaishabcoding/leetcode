@@ -1,3 +1,15 @@
+// @lc code=start
+function buildArray(nums: number[]): number[] {
+	return nums.map((_, i) => nums[nums[i]]);
+}
+// @lc code=end
+
+console.log(buildArray([0, 2, 1, 5, 3, 4])); // [0,1,2,4,5,3]
+console.log(buildArray([5, 0, 1, 2, 3, 4])); // [4,5,0,1,2,3]
+console.log(buildArray([0, 1, 2, 3, 4, 5])); // [0,1,2,3,4,5]
+console.log(buildArray([1, 0, 2, 3, 4, 5])); // [0,1,2,3,4,5]
+console.log(buildArray([1, 2, 0, 3, 4, 5])); // [2,0,1,3,4,5]
+
 /*
  * @lc app=leetcode id=1920 lang=typescript
  *
@@ -57,9 +69,3 @@
  * memory)?
  *
  */
-
-// @lc code=start
-function buildArray(nums: number[]): number[] {
-	return nums.map((_, i) => nums[nums[i]]);
-}
-// @lc code=end

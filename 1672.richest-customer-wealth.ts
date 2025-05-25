@@ -1,3 +1,53 @@
+// @lc code=start
+function maximumWealth(accounts: number[][]): number {
+	let result = 0;
+
+	for (const account of accounts) {
+		const sum = account.reduce((a, b) => a + b, 0);
+		if (sum > result) {
+			result = sum;
+		}
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(
+	maximumWealth([
+		[1, 2, 3],
+		[3, 2, 1],
+	])
+); // 6
+console.log(
+	maximumWealth([
+		[1, 5],
+		[7, 3],
+		[3, 5],
+	])
+); // 10
+console.log(
+	maximumWealth([
+		[2, 8, 7],
+		[7, 1, 3],
+		[1, 9, 5],
+	])
+); // 17
+console.log(
+	maximumWealth([
+		[2, 6, 3],
+		[1, 2, 5],
+		[1, 3, 3],
+	])
+); // 10
+console.log(
+	maximumWealth([
+		[2, 3, 4],
+		[4, 3, 2],
+		[1, 2, 5],
+	])
+); // 10
+
 /*
  * @lc app=leetcode id=1672 lang=typescript
  *
@@ -63,18 +113,3 @@
  *
  *
  */
-
-// @lc code=start
-function maximumWealth(accounts: number[][]): number {
-	let result = 0;
-
-	for (const account of accounts) {
-		const sum = account.reduce((a, b) => a + b, 0);
-		if (sum > result) {
-			result = sum;
-		}
-	}
-
-	return result;
-}
-// @lc code=end

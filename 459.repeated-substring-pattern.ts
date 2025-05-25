@@ -1,3 +1,15 @@
+// @lc code=start
+function repeatedSubstringPattern(s: string): boolean {
+	return (s + s).slice(1, -1).includes(s);
+}
+// @lc code=end
+
+console.log(repeatedSubstringPattern("abab")); // true
+console.log(repeatedSubstringPattern("aba")); // false
+console.log(repeatedSubstringPattern("abcabcabcabc")); // true
+console.log(repeatedSubstringPattern("")); // false
+console.log(repeatedSubstringPattern("abc")); // false
+
 /*
  * @lc app=leetcode id=459 lang=typescript
  *
@@ -50,9 +62,3 @@
  *
  *
  */
-
-// @lc code=start
-function repeatedSubstringPattern(s: string): boolean {
-	return (s + s).slice(1, -1).includes(s);
-}
-// @lc code=end

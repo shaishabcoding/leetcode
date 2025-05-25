@@ -1,3 +1,15 @@
+// @lc code=start
+function fib(n: number): number {
+	return n < 2 ? n : fib(n - 1) + fib(n - 2);
+}
+// @lc code=end
+
+console.log(fib(4)); // 3
+console.log(fib(5)); // 5
+console.log(fib(30)); // 832040
+console.log(fib(31)); // 1346269
+console.log(fib(32)); // 2178309
+
 /*
  * @lc app=leetcode id=509 lang=typescript
  *
@@ -57,9 +69,3 @@
  *
  *
  */
-
-// @lc code=start
-function fib(n: number): number {
-	return n < 2 ? n : fib(n - 1) + fib(n - 2);
-}
-// @lc code=end

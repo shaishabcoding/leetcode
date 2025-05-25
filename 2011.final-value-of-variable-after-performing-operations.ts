@@ -1,3 +1,26 @@
+// @lc code=start
+function finalValueAfterOperations(operations: string[]): number {
+	let x = 0;
+
+	for (let i = 0; i < operations.length; i++) {
+		const operation = operations[i];
+		if (operation === "++X" || operation === "X++") {
+			x++;
+		} else {
+			x--;
+		}
+	}
+
+	return x;
+}
+// @lc code=end
+
+console.log(finalValueAfterOperations(["--X", "X++", "X++"])); // 1
+console.log(finalValueAfterOperations(["++X", "++X", "X++"])); // 3
+console.log(finalValueAfterOperations(["X++", "++X", "--X", "X--"])); // 0
+console.log(finalValueAfterOperations(["--X", "X--", "X++", "X++"])); // 0
+console.log(finalValueAfterOperations(["X++", "--X", "X++", "++X"])); // 1
+
 /*
  * @lc app=leetcode id=2011 lang=typescript
  *
@@ -73,20 +96,3 @@
  *
  *
  */
-
-// @lc code=start
-function finalValueAfterOperations(operations: string[]): number {
-	let x = 0;
-
-	for (let i = 0; i < operations.length; i++) {
-		const operation = operations[i];
-		if (operation === "++X" || operation === "X++") {
-			x++;
-		} else {
-			x--;
-		}
-	}
-
-	return x;
-}
-// @lc code=end

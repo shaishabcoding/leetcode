@@ -1,3 +1,20 @@
+// @lc code=start
+function scoreOfString(s: string): number {
+	let score = 0;
+	for (let i = 0; i < s.length - 1; i++) {
+		score += Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1));
+	}
+
+	return score;
+}
+// @lc code=end
+
+console.log(scoreOfString("hello")); // 13
+console.log(scoreOfString("zaz")); // 50
+console.log(scoreOfString("a")); // 0
+console.log(scoreOfString("aa")); // 0
+console.log(scoreOfString("aaa")); // 0
+
 /*
  * @lc app=leetcode id=3110 lang=typescript
  *
@@ -55,14 +72,3 @@
  *
  *
  */
-
-// @lc code=start
-function scoreOfString(s: string): number {
-	let score = 0;
-	for (let i = 0; i < s.length - 1; i++) {
-		score += Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1));
-	}
-
-	return score;
-}
-// @lc code=end

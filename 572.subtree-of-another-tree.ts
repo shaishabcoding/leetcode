@@ -1,5 +1,42 @@
 import { TreeNode } from "./utils";
 
+// @lc code=start
+function isSameTree(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
+	if (!tree1 && !tree2) return true;
+	if (!tree1 || !tree2) return false;
+
+	return (
+		tree1.val === tree2.val &&
+		isSameTree(tree1.left, tree2.left) &&
+		isSameTree(tree1.right, tree2.right)
+	);
+}
+
+function isSubtree(root: TreeNode | null, subRoot: TreeNode | null): boolean {
+	if (!subRoot) return true;
+	if (!root) return false;
+
+	return (
+		isSameTree(root, subRoot) ||
+		isSubtree(root.left, subRoot) ||
+		isSubtree(root.right, subRoot)
+	);
+}
+// @lc code=end
+
+console.log(
+	isSubtree(TreeNode.fromArray([3, 4, 5, 1, 2]), TreeNode.fromArray([4, 1, 2]))
+); // true
+console.log(
+	isSubtree(
+		TreeNode.fromArray([3, 4, 5, 1, 2, null, null, null, null, 0]),
+		TreeNode.fromArray([4, 1, 2])
+	)
+); // false
+console.log(isSubtree(null, TreeNode.fromArray([4, 1, 2]))); // false
+console.log(isSubtree(null, null)); // true
+console.log(isSubtree(null, TreeNode.fromArray([4, 1, 2]))); // false
+
 /*
  * @lc app=leetcode id=572 lang=typescript
  *
@@ -49,27 +86,3 @@ import { TreeNode } from "./utils";
  *
  *
  */
-
-// @lc code=start
-function isSameTree(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
-	if (!tree1 && !tree2) return true;
-	if (!tree1 || !tree2) return false;
-
-	return (
-		tree1.val === tree2.val &&
-		isSameTree(tree1.left, tree2.left) &&
-		isSameTree(tree1.right, tree2.right)
-	);
-}
-
-function isSubtree(root: TreeNode | null, subRoot: TreeNode | null): boolean {
-	if (!subRoot) return true;
-	if (!root) return false;
-
-	return (
-		isSameTree(root, subRoot) ||
-		isSubtree(root.left, subRoot) ||
-		isSubtree(root.right, subRoot)
-	);
-}
-// @lc code=end

@@ -1,5 +1,37 @@
 import { TreeNode } from "./utils";
 
+// @lc code=start
+function averageOfLevels(root: TreeNode | null): number[] {
+	if (!root) return [];
+
+	const result: number[] = [];
+	const queue: TreeNode[] = [root];
+
+	while (queue.length) {
+		const levelSize = queue.length;
+		let levelSum = 0;
+
+		for (let i = 0; i < levelSize; i++) {
+			const currentNode = queue.shift()!;
+			levelSum += currentNode.val;
+
+			if (currentNode.left) queue.push(currentNode.left);
+			if (currentNode.right) queue.push(currentNode.right);
+		}
+
+		result.push(levelSum / levelSize);
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(averageOfLevels(TreeNode.fromArray([3, 9, 20, null, null, 15, 7]))); // [3, 14.5, 11]
+console.log(averageOfLevels(TreeNode.fromArray([3, 9, 20, 15, 7]))); // [3, 14.5, 11]
+console.log(averageOfLevels(null)); // []
+console.log(averageOfLevels(TreeNode.fromArray([3, 9, 20, 15, 7, 1, 2]))); // [3, 14.5, 11, 6]
+console.log(averageOfLevels(TreeNode.fromArray([2147483647]))); // [2147483647]
+
 /*
  * @lc app=leetcode id=637 lang=typescript
  *
@@ -45,29 +77,3 @@ import { TreeNode } from "./utils";
  *
  *
  */
-
-// @lc code=start
-function averageOfLevels(root: TreeNode | null): number[] {
-	if (!root) return [];
-
-	const result: number[] = [];
-	const queue: TreeNode[] = [root];
-
-	while (queue.length) {
-		const levelSize = queue.length;
-		let levelSum = 0;
-
-		for (let i = 0; i < levelSize; i++) {
-			const currentNode = queue.shift()!;
-			levelSum += currentNode.val;
-
-			if (currentNode.left) queue.push(currentNode.left);
-			if (currentNode.right) queue.push(currentNode.right);
-		}
-
-		result.push(levelSum / levelSize);
-	}
-
-	return result;
-}
-// @lc code=end

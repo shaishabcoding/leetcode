@@ -1,3 +1,15 @@
+// @lc code=start
+function smallestEvenMultiple(n: number): number {
+	return n % 2 === 0 ? n : n * 2;
+}
+// @lc code=end
+
+console.log(smallestEvenMultiple(5)); // 10
+console.log(smallestEvenMultiple(6)); // 6
+console.log(smallestEvenMultiple(7)); // 14
+console.log(smallestEvenMultiple(8)); // 8
+console.log(smallestEvenMultiple(9)); // 18
+
 /*
  * @lc app=leetcode id=2413 lang=typescript
  *
@@ -41,9 +53,3 @@
  *
  *
  */
-
-// @lc code=start
-function smallestEvenMultiple(n: number): number {
-	return n % 2 === 0 ? n : n * 2;
-}
-// @lc code=end

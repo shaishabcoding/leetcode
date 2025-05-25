@@ -1,5 +1,34 @@
 import { TreeNode } from "./utils";
 
+// @lc code=start
+function mergeTrees(
+	tree1: TreeNode | null,
+	tree2: TreeNode | null
+): TreeNode | null {
+	if (!tree1) return tree2;
+	if (!tree2) return tree1;
+
+	const mergedTree = new TreeNode(tree1.val + tree2.val);
+	mergedTree.left = mergeTrees(tree1.left, tree2.left);
+	mergedTree.right = mergeTrees(tree1.right, tree2.right);
+
+	return mergedTree;
+}
+// @lc code=end
+
+console.log(
+	mergeTrees(
+		TreeNode.fromArray([1, 3, 2, 5]),
+		TreeNode.fromArray([2, 1, 3, null, 4, null, 7])
+	)
+); // [3, 4, 5, 5, 4, null, 7]
+console.log(mergeTrees(TreeNode.fromArray([1]), TreeNode.fromArray([1, 2]))); // [2, 2]
+console.log(mergeTrees(null, TreeNode.fromArray([1, 2]))); // [1, 2]
+console.log(mergeTrees(null, null)); // null
+console.log(
+	mergeTrees(TreeNode.fromArray([1, 2, 3]), TreeNode.fromArray([4, 5, 6]))
+); // [5, 7, 9]
+
 /*
  * @lc app=leetcode id=617 lang=typescript
  *
@@ -51,19 +80,3 @@ import { TreeNode } from "./utils";
  *
  *
  */
-
-// @lc code=start
-function mergeTrees(
-	tree1: TreeNode | null,
-	tree2: TreeNode | null
-): TreeNode | null {
-	if (!tree1) return tree2;
-	if (!tree2) return tree1;
-
-	const mergedTree = new TreeNode(tree1.val + tree2.val);
-	mergedTree.left = mergeTrees(tree1.left, tree2.left);
-	mergedTree.right = mergeTrees(tree1.right, tree2.right);
-
-	return mergedTree;
-}
-// @lc code=end

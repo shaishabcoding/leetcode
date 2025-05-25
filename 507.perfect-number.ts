@@ -1,3 +1,19 @@
+// @lc code=start
+function checkPerfectNumber(num: number): boolean {
+	let sum = 0;
+	for (let i = 1; i < num; i++) {
+		if (num % i === 0) sum += i;
+	}
+	return sum === num;
+}
+// @lc code=end
+
+console.log(checkPerfectNumber(28)); // true
+console.log(checkPerfectNumber(7)); // false
+console.log(checkPerfectNumber(6)); // true
+console.log(checkPerfectNumber(496)); // true
+console.log(checkPerfectNumber(8128)); // true
+
 /*
  * @lc app=leetcode id=507 lang=typescript
  *
@@ -45,13 +61,3 @@
  *
  *
  */
-
-// @lc code=start
-function checkPerfectNumber(num: number): boolean {
-	let sum = 0;
-	for (let i = 1; i < num; i++) {
-		if (num % i === 0) sum += i;
-	}
-	return sum === num;
-}
-// @lc code=end

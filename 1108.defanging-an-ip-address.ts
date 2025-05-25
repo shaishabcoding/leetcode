@@ -1,3 +1,15 @@
+// @lc code=start
+function defangIPaddr(address: string): string {
+	return address.replace(/\./g, "[.]");
+}
+// @lc code=end
+
+console.log(defangIPaddr("1.1.1.1")); // "1[.]1[.]1[.]1"
+console.log(defangIPaddr("255.100.50.0")); // "255[.]100[.]50[.]0"
+console.log(defangIPaddr("192.168.1.1")); // "192[.]168[.]1[.]1"
+console.log(defangIPaddr("10.0.0.1")); // "10[.]0[.]0[.]1"
+console.log(defangIPaddr("8.8.8.8")); // "8[.]8[.]8[.]8"
+
 /*
  * @lc app=leetcode id=1108 lang=typescript
  *
@@ -33,9 +45,3 @@
  * The given address is a valid IPv4 address.
  *
  */
-
-// @lc code=start
-function defangIPaddr(address: string): string {
-	return address.replace(/\./g, "[.]");
-}
-// @lc code=end

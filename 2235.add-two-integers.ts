@@ -1,3 +1,15 @@
+// @lc code=start
+function sum(num1: number, num2: number): number {
+	return num1 + num2;
+}
+// @lc code=end
+
+console.log(sum(12, 5)); // 17
+console.log(sum(-10, 4)); // -6
+console.log(sum(0, 0)); // 0
+console.log(sum(1, -1)); // 0
+console.log(sum(1, 1)); // 2
+
 /*
  * @lc app=leetcode id=2235 lang=typescript
  *
@@ -40,9 +52,3 @@
  *
  *
  */
-
-// @lc code=start
-function sum(num1: number, num2: number): number {
-	return num1 + num2;
-}
-// @lc code=end
