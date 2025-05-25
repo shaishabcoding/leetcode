@@ -59,19 +59,19 @@ class TreeNode {
 }
 
 // @lc code=start
+function isMirror(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
+	if (!tree1 && !tree2) return true;
+	if (!tree1 || !tree2) return false;
+
+	return (
+		tree1.val === tree2.val &&
+		isMirror(tree1.left, tree2.right) &&
+		isMirror(tree1.right, tree2.left)
+	);
+}
+
 function isSymmetric(root: TreeNode | null): boolean {
 	if (!root) return true;
-
-	function isMirror(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
-		if (!tree1 && !tree2) return true;
-		if (!tree1 || !tree2) return false;
-
-		return (
-			tree1.val === tree2.val &&
-			isMirror(tree1.left, tree2.right) &&
-			isMirror(tree1.right, tree2.left)
-		);
-	}
 
 	return isMirror(root.left, root.right);
 }
