@@ -79,3 +79,13 @@ function diameterOfBinaryTree(root: TreeNode | null, max?: [number]): number {
 	return Math.max(left, right) + 1;
 }
 // @lc code=end
+
+console.log(
+	diameterOfBinaryTree(
+		new TreeNode(
+			1,
+			new TreeNode(2, new TreeNode(4), new TreeNode(5)),
+			new TreeNode(3)
+		)
+	)
+); // 3
