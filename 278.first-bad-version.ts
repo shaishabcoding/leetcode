@@ -1,5 +1,5 @@
 // @lc code=start
-var solution = function (isBadVersion: any) {
+function solution(isBadVersion: any) {
 	return function (n: number): number {
 		let left = 1;
 		let right = n;
@@ -15,7 +15,7 @@ var solution = function (isBadVersion: any) {
 
 		return left;
 	};
-};
+}
 // @lc code=end
 
 console.log(solution((n: number) => n === 4)(5)); // 4
