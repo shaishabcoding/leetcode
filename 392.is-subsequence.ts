@@ -1,3 +1,24 @@
+// @lc code=start
+function isSubsequence(s: string, t: string): boolean {
+	let windowStart = 0;
+	let windowEnd = 0;
+	while (windowStart < s.length && windowEnd < t.length) {
+		if (s[windowStart] === t[windowEnd]) {
+			windowStart++;
+		}
+		windowEnd++;
+	}
+
+	return windowStart === s.length;
+}
+// @lc code=end
+
+console.log(isSubsequence("abc", "ahbgdc")); // true
+console.log(isSubsequence("axc", "ahbgdc")); // false
+console.log(isSubsequence("axc", "ahbgdc")); // false
+console.log(isSubsequence("axc", "ahbgdc")); // false
+console.log(isSubsequence("axc", "ahbgdc")); // false
+
 /*
  * @lc app=leetcode id=392 lang=typescript
  *
@@ -43,18 +64,3 @@
  * >= 10^9, and you want to check one by one to see if t has its subsequence.
  * In this scenario, how would you change your code?
  */
-
-// @lc code=start
-function isSubsequence(s: string, t: string): boolean {
-	let windowStart = 0;
-	let windowEnd = 0;
-	while (windowStart < s.length && windowEnd < t.length) {
-		if (s[windowStart] === t[windowEnd]) {
-			windowStart++;
-		}
-		windowEnd++;
-	}
-
-	return windowStart === s.length;
-}
-// @lc code=end

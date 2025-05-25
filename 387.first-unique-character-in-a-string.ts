@@ -1,3 +1,21 @@
+// @lc code=start
+function firstUniqChar(s: string): number {
+	for (let c of s) {
+		if (s.indexOf(c) === s.lastIndexOf(c)) {
+			return s.indexOf(c);
+		}
+	}
+
+	return -1;
+}
+// @lc code=end
+
+console.log(firstUniqChar("leetcode")); // 0
+console.log(firstUniqChar("loveleetcode")); // 2
+console.log(firstUniqChar("aabb")); // -1
+console.log(firstUniqChar("")); // -1
+console.log(firstUniqChar("a")); // 0
+
 /*
  * @lc app=leetcode id=387 lang=typescript
  *
@@ -55,15 +73,3 @@
  *
  *
  */
-
-// @lc code=start
-function firstUniqChar(s: string): number {
-	for(let c of s){
-    if(s.indexOf(c) === s.lastIndexOf(c)){
-      return s.indexOf(c);
-    }
-  }
-
-	return -1;
-}
-// @lc code=end

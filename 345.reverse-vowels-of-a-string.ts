@@ -1,3 +1,37 @@
+// @lc code=start
+function reverseVowels(s: string): string {
+	const vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]);
+	const chars = s.split("");
+
+	let left = 0;
+	let right = chars.length - 1;
+
+	while (left < right) {
+		if (!vowels.has(chars[left])) {
+			left++;
+		} else if (!vowels.has(chars[right])) {
+			right--;
+		} else {
+			let temp = chars[left];
+			chars[left] = chars[right];
+			chars[right] = temp;
+
+			left++;
+			right--;
+		}
+	}
+
+	return chars.join("");
+}
+
+// @lc code=end
+
+console.log(reverseVowels("IceCreAm")); // "AceCreIm"
+console.log(reverseVowels("leetcode")); // "leotcede"
+console.log(reverseVowels("aA")); // "Aa"
+console.log(reverseVowels("a")); // "a"
+console.log(reverseVowels("")); // ""
+
 /*
  * @lc app=leetcode id=345 lang=typescript
  *
@@ -49,31 +83,3 @@
  *
  *
  */
-
-// @lc code=start
-function reverseVowels(s: string): string {
-	const vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]);
-	const chars = s.split("");
-
-	let left = 0;
-	let right = chars.length - 1;
-
-	while (left < right) {
-		if (!vowels.has(chars[left])) {
-			left++;
-		} else if (!vowels.has(chars[right])) {
-			right--;
-		} else {
-			let temp = chars[left];
-			chars[left] = chars[right];
-			chars[right] = temp;
-
-			left++;
-			right--;
-		}
-	}
-
-	return chars.join("");
-}
-
-// @lc code=end

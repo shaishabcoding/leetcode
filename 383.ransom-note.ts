@@ -1,3 +1,33 @@
+// @lc code=start
+function canConstruct(ransomNote: string, magazine: string): boolean {
+	const magazineFrequency: { [char: string]: number } = {};
+
+	for (const char of magazine) {
+		if (magazineFrequency[char]) {
+			magazineFrequency[char]++;
+		} else {
+			magazineFrequency[char] = 1;
+		}
+	}
+
+	for (const char of ransomNote) {
+		if (!magazineFrequency[char]) {
+			return false;
+		} else {
+			magazineFrequency[char]--;
+		}
+	}
+
+	return true;
+}
+// @lc code=end
+
+console.log(canConstruct("aa", "aab")); // true
+console.log(canConstruct("aa", "ab")); // false
+console.log(canConstruct("aa", "aa")); // true
+console.log(canConstruct("a", "b")); // false
+console.log(canConstruct("a", "a")); // true
+
 /*
  * @lc app=leetcode id=383 lang=typescript
  *
@@ -38,27 +68,3 @@
  *
  *
  */
-
-// @lc code=start
-function canConstruct(ransomNote: string, magazine: string): boolean {
-	const magazineFrequency: { [char: string]: number } = {};
-
-	for (const char of magazine) {
-		if (magazineFrequency[char]) {
-			magazineFrequency[char]++;
-		} else {
-			magazineFrequency[char] = 1;
-		}
-	}
-
-	for (const char of ransomNote) {
-		if (!magazineFrequency[char]) {
-			return false;
-		} else {
-			magazineFrequency[char]--;
-		}
-	}
-
-	return true;
-}
-// @lc code=end

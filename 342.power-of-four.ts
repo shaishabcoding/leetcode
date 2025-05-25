@@ -1,3 +1,17 @@
+// @lc code=start
+function isPowerOfFour(n: number): boolean {
+	if (n < 1) return false;
+	if (n === 1) return true;
+	return n % 4 === 0 && isPowerOfFour(n / 4);
+}
+// @lc code=end
+
+console.log(isPowerOfFour(16)); // true
+console.log(isPowerOfFour(5)); // false
+console.log(isPowerOfFour(1)); // true
+console.log(isPowerOfFour(0)); // false
+console.log(isPowerOfFour(-1)); // false
+
 /*
  * @lc app=leetcode id=342 lang=typescript
  *
@@ -40,11 +54,3 @@
  *
  * Follow up: Could you solve it without loops/recursion?
  */
-
-// @lc code=start
-function isPowerOfFour(n: number): boolean {
-	if (n < 1) return false;
-	if (n === 1) return true;
-	return n % 4 === 0 && isPowerOfFour(n / 4);
-}
-// @lc code=end

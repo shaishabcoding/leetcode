@@ -1,3 +1,34 @@
+// @lc code=start
+function decodeString(s: string): string {
+	const stack: Array<{ str: string; num: number }> = [];
+	let currentStr = "";
+	let currentNum = 0;
+
+	for (const char of s) {
+		if (char >= "0" && char <= "9") {
+			currentNum = currentNum * 10 + parseInt(char, 10);
+		} else if (char === "[") {
+			stack.push({ str: currentStr, num: currentNum });
+			currentStr = "";
+			currentNum = 0;
+		} else if (char === "]") {
+			const { str, num } = stack.pop()!;
+			currentStr = str + currentStr.repeat(num);
+		} else {
+			currentStr += char;
+		}
+	}
+
+	return currentStr;
+}
+// @lc code=end
+
+console.log(decodeString("3[a]2[bc]")); // "aaabcbc"
+console.log(decodeString("3[a2[c]]")); // "accaccacc"
+console.log(decodeString("2[abc]3[cd]ef")); // "abcabccdcdcdef"
+console.log(decodeString("10[abc]")); // "abcabcabcabcabcabcabcabcabc"
+console.log(decodeString("3[a2[c]]")); // "accaccacc"
+
 /*
  * @lc app=leetcode id=394 lang=typescript
  *
@@ -62,28 +93,3 @@
  *
  *
  */
-
-// @lc code=start
-function decodeString(s: string): string {
-	const stack: Array<{ str: string; num: number }> = [];
-	let currentStr = "";
-	let currentNum = 0;
-
-	for (const char of s) {
-		if (char >= "0" && char <= "9") {
-			currentNum = currentNum * 10 + parseInt(char, 10);
-		} else if (char === "[") {
-			stack.push({ str: currentStr, num: currentNum });
-			currentStr = "";
-			currentNum = 0;
-		} else if (char === "]") {
-			const { str, num } = stack.pop()!;
-			currentStr = str + currentStr.repeat(num);
-		} else {
-			currentStr += char;
-		}
-	}
-
-	return currentStr;
-}
-// @lc code=end

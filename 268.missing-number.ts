@@ -1,3 +1,23 @@
+// @lc code=start
+function missingNumber(nums: number[]): number {
+	let n = nums.length;
+
+	let result = n;
+
+	for (let i = 0; i < n; i++) {
+		result ^= i ^ nums[i];
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(missingNumber([3, 0, 1])); // 2
+console.log(missingNumber([0, 1])); // 2
+console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // 8
+console.log(missingNumber([0])); // 1
+console.log(missingNumber([1])); // 0
+
 /*
  * @lc app=leetcode id=268 lang=typescript
  *
@@ -90,17 +110,3 @@
  * complexity and O(n) runtime complexity?
  *
  */
-
-// @lc code=start
-function missingNumber(nums: number[]): number {
-	let n = nums.length;
-
-	let result = n;
-
-	for (let i = 0; i < n; i++) {
-		result ^= i ^ nums[i];
-	}
-
-	return result;
-}
-// @lc code=end

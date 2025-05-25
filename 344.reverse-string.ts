@@ -1,3 +1,25 @@
+// @lc code=start
+function reverseString(s: string[]): void {
+	let left = 0;
+	let right = s.length - 1;
+
+	while (left < right) {
+		let temp = s[left];
+		s[left] = s[right];
+		s[right] = temp;
+
+		left++;
+		right--;
+	}
+}
+// @lc code=end
+
+console.log(reverseString(["h", "e", "l", "l", "o"])); // ["o","l","l","e","h"]
+console.log(reverseString(["H", "a", "n", "n", "a", "h"])); // ["h","a","n","n","a","H"]
+console.log(reverseString(["a", "b", "c", "d", "e"])); // ["e","d","c","b","a"]
+console.log(reverseString(["a", "b", "c", "d", "e", "f"])); // ["f","e","d","c","b","a"]
+console.log(reverseString(["a", "b", "c", "d", "e", "f", "g"])); // ["g","f","e","d","c","b","a"]
+
 /*
  * @lc app=leetcode id=344 lang=typescript
  *
@@ -36,22 +58,3 @@
  *
  *
  */
-
-// @lc code=start
-/**
- Do not return anything, modify s in-place instead.
- */
-function reverseString(s: string[]): void {
-	let left = 0;
-	let right = s.length - 1;
-
-	while (left < right) {
-		let temp = s[left];
-		s[left] = s[right];
-		s[right] = temp;
-
-		left++;
-		right--;
-	}
-}
-// @lc code=end

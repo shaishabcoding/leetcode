@@ -1,3 +1,22 @@
+// @lc code=start
+function fizzBuzz(n: number): string[] {
+	const arr = Array.from({ length: n }, (_, i) => {
+		if ((i + 1) % 3 === 0 && (i + 1) % 5 === 0) return "FizzBuzz";
+		if ((i + 1) % 3 === 0) return "Fizz";
+		if ((i + 1) % 5 === 0) return "Buzz";
+		return (i + 1).toString();
+	});
+
+	return arr;
+}
+// @lc code=end
+
+console.log(fizzBuzz(15)); // ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+console.log(fizzBuzz(3)); // ["1","2","Fizz"]
+console.log(fizzBuzz(5)); // ["1","2","Fizz","4","Buzz"]
+console.log(fizzBuzz(1)); // ["1"]
+console.log(fizzBuzz(2)); // ["1","2"]
+
 /*
  * @lc app=leetcode id=412 lang=typescript
  *
@@ -42,16 +61,3 @@
  *
  *
  */
-
-// @lc code=start
-function fizzBuzz(n: number): string[] {
-	const arr = Array.from({ length: n }, (_, i) => {
-		if ((i + 1) % 3 === 0 && (i + 1) % 5 === 0) return "FizzBuzz";
-		if ((i + 1) % 3 === 0) return "Fizz";
-		if ((i + 1) % 5 === 0) return "Buzz";
-		return (i + 1).toString();
-	});
-
-	return arr;
-}
-// @lc code=end

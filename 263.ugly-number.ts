@@ -1,3 +1,19 @@
+// @lc code=start
+function isUgly(n: number): boolean {
+	if (n <= 0) return false;
+	while (n % 2 === 0) n /= 2;
+	while (n % 3 === 0) n /= 3;
+	while (n % 5 === 0) n /= 5;
+	return n === 1;
+}
+// @lc code=end
+
+console.log(isUgly(6)); // true
+console.log(isUgly(1)); // true
+console.log(isUgly(14)); // false
+console.log(isUgly(8)); // true
+console.log(isUgly(0)); // false
+
 /*
  * @lc app=leetcode id=263 lang=typescript
  *
@@ -51,13 +67,3 @@
  *
  *
  */
-
-// @lc code=start
-function isUgly(n: number): boolean {
-	if (n <= 0) return false;
-	while (n % 2 === 0) n /= 2;
-	while (n % 3 === 0) n /= 3;
-	while (n % 5 === 0) n /= 5;
-	return n === 1;
-}
-// @lc code=end

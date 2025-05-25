@@ -1,3 +1,20 @@
+// @lc code=start
+function isPerfectSquare(num: number, i = 1): boolean {
+	if (num < 0) return false;
+	if (num < 2) return true;
+
+	if (i * i > num) return false;
+	if (i * i === num) return true;
+	return isPerfectSquare(num, i + 1);
+}
+// @lc code=end
+
+console.log(isPerfectSquare(16)); // true
+console.log(isPerfectSquare(14)); // false
+console.log(isPerfectSquare(-16)); // false
+console.log(isPerfectSquare(1)); // true
+console.log(isPerfectSquare(2)); // false
+
 /*
  * @lc app=leetcode id=367 lang=typescript
  *
@@ -47,14 +64,3 @@
  *
  *
  */
-
-// @lc code=start
-function isPerfectSquare(num: number, i = 1): boolean {
-	if (num < 0) return false;
-	if (num < 2) return true;
-
-	if (i * i > num) return false;
-	if (i * i === num) return true;
-	return isPerfectSquare(num, i + 1);
-}
-// @lc code=end

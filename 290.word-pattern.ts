@@ -1,3 +1,30 @@
+// @lc code=start
+function wordPattern(pattern: string, s: string): boolean {
+	const words = s.split(" ");
+	if (words.length !== pattern.length) return false;
+	const map = new Map<string, string>();
+
+	for (let i = 0; i < pattern.length; i++) {
+		const p = pattern[i];
+		const w = words[i];
+
+		if (map.has(p) && map.get(p) !== w) return false;
+		if (Array.from(map.values()).includes(w) && !map.has(p)) return false;
+
+		map.set(p, w);
+	}
+
+	return true;
+}
+// @lc code=end
+
+console.log(wordPattern("abba", "dog cat cat dog")); // true
+console.log(wordPattern("abba", "dog cat cat fish")); // false
+console.log(wordPattern("aaaa", "dog cat cat dog")); // false
+console.log(wordPattern("abba", "dog dog dog dog")); // false
+console.log(wordPattern("abba", "dog cat cat fish")); // false
+console.log(wordPattern("abba", "dog cat cat dog")); // true
+
 /*
  * @lc app=leetcode id=290 lang=typescript
  *
@@ -72,23 +99,3 @@
  *
  *
  */
-
-// @lc code=start
-function wordPattern(pattern: string, s: string): boolean {
-	const words = s.split(" ");
-	if (words.length !== pattern.length) return false;
-	const map = new Map<string, string>();
-
-	for (let i = 0; i < pattern.length; i++) {
-		const p = pattern[i];
-		const w = words[i];
-
-		if (map.has(p) && map.get(p) !== w) return false;
-		if (Array.from(map.values()).includes(w) && !map.has(p)) return false;
-
-		map.set(p, w);
-	}
-
-	return true;
-}
-// @lc code=end

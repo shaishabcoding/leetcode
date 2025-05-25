@@ -1,3 +1,17 @@
+// @lc code=start
+function isPowerOfThree(n: number): boolean {
+	if (n === 1) return true;
+	if (n === 0 || n % 3 !== 0) return false;
+	return isPowerOfThree(n / 3);
+}
+// @lc code=end
+
+console.log(isPowerOfThree(27)); // true
+console.log(isPowerOfThree(0)); // false
+console.log(isPowerOfThree(-1)); // false
+console.log(isPowerOfThree(9)); // true
+console.log(isPowerOfThree(45)); // false
+
 /*
  * @lc app=leetcode id=326 lang=typescript
  *
@@ -54,11 +68,3 @@
  *
  * Follow up: Could you solve it without loops/recursion?
  */
-
-// @lc code=start
-function isPowerOfThree(n: number): boolean {
-	if (n === 1) return true;
-	if (n === 0 || n % 3 !== 0) return false;
-	return isPowerOfThree(n / 3);
-}
-// @lc code=end

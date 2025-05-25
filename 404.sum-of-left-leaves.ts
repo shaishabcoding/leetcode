@@ -1,5 +1,27 @@
 import { TreeNode } from "./utils";
 
+// @lc code=start
+function sumOfLeftLeaves(
+	node: TreeNode | null,
+	isLeft: boolean = false
+): number {
+	if (!node) return 0;
+
+	if (!node.left && !node.right && isLeft) return node.val;
+
+	return sumOfLeftLeaves(node.left, true) + sumOfLeftLeaves(node.right, false);
+}
+// @lc code=end
+
+console.log(sumOfLeftLeaves(TreeNode.fromArray([3, 9, 20, null, null, 15, 7]))); // 24
+console.log(sumOfLeftLeaves(TreeNode.fromArray([1]))); // 0
+console.log(sumOfLeftLeaves(TreeNode.fromArray([1, 2]))); // 2
+console.log(sumOfLeftLeaves(TreeNode.fromArray([1, 2, 3, 4, 5]))); // 4
+console.log(sumOfLeftLeaves(TreeNode.fromArray([1, null, 3, 4, null, 5]))); // 5
+console.log(
+	sumOfLeftLeaves(TreeNode.fromArray([1, 2, 3, null, 4, 5, null, 6]))
+); // 10
+
 /*
  * @lc app=leetcode id=404 lang=typescript
  *
@@ -46,16 +68,3 @@ import { TreeNode } from "./utils";
  *
  *
  */
-
-// @lc code=start
-function sumOfLeftLeaves(
-	node: TreeNode | null,
-	isLeft: boolean = false
-): number {
-	if (!node) return 0;
-
-	if (!node.left && !node.right && isLeft) return node.val;
-
-	return sumOfLeftLeaves(node.left, true) + sumOfLeftLeaves(node.right, false);
-}
-// @lc code=end

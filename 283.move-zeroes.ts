@@ -1,3 +1,22 @@
+// @lc code=start
+function moveZeroes(nums: number[]): void {
+	let position = 0;
+
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] !== 0) {
+			[nums[position], nums[i]] = [nums[i], nums[position]];
+			position++;
+		}
+	}
+}
+// @lc code=end
+
+console.log(moveZeroes([0, 1, 0, 3, 12])); // [1,3,12,0,0]
+console.log(moveZeroes([0])); // [0]
+console.log(moveZeroes([1])); // [1]
+console.log(moveZeroes([1, 0])); // [1,0]
+console.log(moveZeroes([1, 0, 1])); // [1,1,0]
+
 /*
  * @lc app=leetcode id=283 lang=typescript
  *
@@ -37,19 +56,3 @@
  *
  * Follow up: Could you minimize the total number of operations done?
  */
-
-// @lc code=start
-/**
- Do not return anything, modify nums in-place instead.
- */
-function moveZeroes(nums: number[]): void {
-	let position = 0;
-
-	for (let i = 0; i < nums.length; i++) {
-		if (nums[i] !== 0) {
-			[nums[position], nums[i]] = [nums[i], nums[position]];
-			position++;
-		}
-	}
-}
-// @lc code=end
