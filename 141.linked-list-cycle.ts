@@ -4,13 +4,13 @@ import { ListNode } from "./utils";
 function hasCycle(head: ListNode | null): boolean {
 	if (!head?.next) return false;
 
-	let slow: ListNode | null = head;
-	let fast: ListNode | null = head.next;
+	let slowPointer: ListNode | null = head;
+	let fastPointer: ListNode | null = head.next;
 
-	while (slow !== fast) {
-		if (!fast?.next) return false;
-		slow = slow!.next;
-		fast = fast.next.next;
+	while (slowPointer !== fastPointer) {
+		if (!fastPointer?.next) return false;
+		slowPointer = slowPointer!.next;
+		fastPointer = fastPointer.next.next;
 	}
 
 	return true;
