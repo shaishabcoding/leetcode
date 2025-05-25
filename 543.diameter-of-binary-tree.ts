@@ -74,8 +74,8 @@ function diameterOfBinaryTree(root: TreeNode | null, max?: [number]): number {
 	const right = diameterOfBinaryTree(root.right, max);
 
 	if (isRoot) return Math.max(left + right, max[0]);
-	else max[0] = Math.max(left + right, max[0]);
 
+	max[0] = Math.max(left + right, max[0]);
 	return Math.max(left, right) + 1;
 }
 // @lc code=end
