@@ -1,4 +1,4 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
 
 // @lc code=start
 function minDepth(root: TreeNode | null): number {

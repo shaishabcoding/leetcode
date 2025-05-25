@@ -1,3 +1,24 @@
+// @lc code=start
+function rob(nums: number[]): number {
+	let p1 = 0;
+	let p2 = 0;
+
+	for (const num of nums) {
+		const temp = p1;
+		p1 = Math.max(p1, p2 + num);
+		p2 = temp;
+	}
+
+	return p1;
+}
+// @lc code=end
+
+console.log(rob([2, 7, 9, 3, 1])); // 12
+console.log(rob([1, 2, 3, 1])); // 4
+console.log(rob([1])); // 1
+console.log(rob([1, 2])); // 2
+console.log(rob([1, 2, 3])); // 4
+
 /*
  * @lc app=leetcode id=198 lang=typescript
  *
@@ -52,18 +73,3 @@
  *
  *
  */
-
-// @lc code=start
-function rob(nums: number[]): number {
-	let p1 = 0;
-	let p2 = 0;
-
-	for (const num of nums) {
-		const temp = p1;
-		p1 = Math.max(p1, p2 + num);
-		p2 = temp;
-	}
-
-	return p1;
-}
-// @lc code=end

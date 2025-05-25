@@ -1,3 +1,23 @@
+// @lc code=start
+function twoSum(nums: number[], target: number): number[] {
+	const map = new Map<number, number>();
+
+	for (let i = 0; i < nums.length; i++) {
+		const com = target - nums[i];
+		if (map.has(com)) return [map.get(com)! + 1, i + 1];
+		map.set(nums[i], i);
+	}
+
+	return [-1, -1];
+}
+// @lc code=end
+
+console.log(twoSum([2, 7, 11, 15], 9)); // [1,2]
+console.log(twoSum([2, 3, 4], 6)); // [1,3]
+console.log(twoSum([-1, 0], -1)); // [1,2]
+console.log(twoSum([0, 0], 0)); // [1,2]
+console.log(twoSum([2, 5, 5, 11], 10)); // [1,3]
+
 /*
  * @lc app=leetcode id=167 lang=typescript
  *
@@ -66,17 +86,3 @@
  *
  *
  */
-
-// @lc code=start
-function twoSum(nums: number[], target: number): number[] {
-	const map = new Map<number, number>();
-
-	for (let i = 0; i < nums.length; i++) {
-		const com = target - nums[i];
-		if (map.has(com)) return [map.get(com)! + 1, i + 1];
-		map.set(nums[i], i);
-	}
-
-	return [-1, -1];
-}
-// @lc code=end

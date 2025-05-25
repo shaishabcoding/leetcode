@@ -1,4 +1,36 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
+
+// @lc code=start
+function binaryTreePaths(root: TreeNode | null): string[] {
+	const result: string[] = [];
+
+	function traverse(node: TreeNode | null, path: string) {
+		if (!node) return;
+
+		path += node.val.toString();
+
+		if (!node.left && !node.right) {
+			result.push(path);
+			return;
+		}
+
+		path += "->";
+
+		traverse(node.left, path);
+		traverse(node.right, path);
+	}
+
+	traverse(root, "");
+
+	return result;
+}
+// @lc code=end
+
+console.log(binaryTreePaths(TreeNode.fromArray([1, 2, 3, null, 5]))); // ["1->2->5","1->3"]
+console.log(binaryTreePaths(TreeNode.fromArray([1]))); // ["1"]
+console.log(binaryTreePaths(null)); // []
+console.log(binaryTreePaths(TreeNode.fromArray([1, 2]))); // ["1->2"]
+console.log(binaryTreePaths(TreeNode.fromArray([1, null, 2, 3]))); // ["1->2->3"]
 
 /*
  * @lc app=leetcode id=257 lang=typescript
@@ -44,29 +76,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  *
  */
-
-// @lc code=start
-function binaryTreePaths(root: TreeNode | null): string[] {
-	const result: string[] = [];
-
-	function traverse(node: TreeNode | null, path: string) {
-		if (!node) return;
-
-		path += node.val.toString();
-
-		if (!node.left && !node.right) {
-			result.push(path);
-			return;
-		}
-
-		path += "->";
-
-		traverse(node.left, path);
-		traverse(node.right, path);
-	}
-
-	traverse(root, "");
-
-	return result;
-}
-// @lc code=end

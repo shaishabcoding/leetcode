@@ -1,3 +1,24 @@
+import { ListNode } from "./utils";
+
+// @lc code=start
+function reverseList(head: ListNode | null): ListNode | null {
+	if (!head?.next) return head;
+
+	const newHead = reverseList(head.next);
+
+	head.next.next = head;
+	head.next = null;
+
+	return newHead;
+}
+// @lc code=end
+
+console.log(reverseList(ListNode.fromArray([1, 2, 3, 4, 5]))); // [5,4,3,2,1]
+console.log(reverseList(ListNode.fromArray([1, 2]))); // [2,1]
+console.log(reverseList(ListNode.fromArray([]))); // []
+console.log(reverseList(ListNode.fromArray([1]))); // [1]
+console.log(reverseList(ListNode.fromArray([1, 2, 3]))); // [3,2,1]
+
 /*
  * @lc app=leetcode id=206 lang=typescript
  *
@@ -51,29 +72,3 @@
  * Could you implement both?
  *
  */
-
-/**
- * Definition for singly-linked list.
- */
-
-class ListNode {
-	val: number;
-	next: ListNode | null;
-	constructor(val?: number, next?: ListNode | null) {
-		this.val = val === undefined ? 0 : val;
-		this.next = next === undefined ? null : next;
-	}
-}
-
-// @lc code=start
-function reverseList(head: ListNode | null): ListNode | null {
-	if (!head?.next) return head;
-
-	const newHead = reverseList(head.next);
-
-	head.next.next = head;
-	head.next = null;
-
-	return newHead;
-}
-// @lc code=end

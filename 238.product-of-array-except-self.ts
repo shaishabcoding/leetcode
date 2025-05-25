@@ -1,3 +1,28 @@
+// @lc code=start
+function productExceptSelf(nums: number[]): number[] {
+	const n = nums.length;
+	const result = new Array(n).fill(1);
+
+	let left = 1;
+	let right = 1;
+	for (let i = 0, j = n - 1; i < n; i++, j--) {
+		result[i] *= left;
+		left *= nums[i];
+
+		result[j] *= right;
+		right *= nums[j];
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(productExceptSelf([1, 2, 3, 4])); // [24,12,8,6]
+console.log(productExceptSelf([-1, 1, 0, -3, 3])); // [0,0,9,0,0]
+console.log(productExceptSelf([0, 0])); // [0,0]
+console.log(productExceptSelf([1, 2, 3, 4, 5])); // [120,60,40,30,24]
+console.log(productExceptSelf([1, 2, 3, 4, 5, 6])); // [720,360,240,180,144,120]
+
 /*
  * @lc app=leetcode id=238 lang=typescript
  *
@@ -45,22 +70,3 @@
  * output array does not count as extra space for space complexity analysis.)
  *
  */
-
-// @lc code=start
-function productExceptSelf(nums: number[]): number[] {
-	const n = nums.length;
-	const result = new Array(n).fill(1);
-
-	let left = 1;
-	let right = 1;
-	for (let i = 0, j = n - 1; i < n; i++, j--) {
-		result[i] *= left;
-		left *= nums[i];
-
-		result[j] *= right;
-		right *= nums[j];
-	}
-
-	return result;
-}
-// @lc code=end

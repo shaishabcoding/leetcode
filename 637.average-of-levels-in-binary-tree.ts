@@ -1,4 +1,4 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
 
 /*
  * @lc app=leetcode id=637 lang=typescript

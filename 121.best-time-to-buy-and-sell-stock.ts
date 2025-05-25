@@ -1,3 +1,23 @@
+// @lc code=start
+function maxProfit(prices: number[]): number {
+	let minPrice = Infinity,
+		maxProfit = 0;
+
+	for (const price of prices) {
+		minPrice = Math.min(minPrice, price);
+		maxProfit = Math.max(maxProfit, price - minPrice);
+	}
+
+	return maxProfit;
+}
+// @lc code=end
+
+console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 5
+console.log(maxProfit([7, 6, 4, 3, 1])); // 0
+console.log(maxProfit([1, 2, 3, 4, 5])); // 4
+console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 5
+console.log(maxProfit([7, 6, 4, 3, 1])); // 0
+
 /*
  * @lc app=leetcode id=121 lang=typescript
  *
@@ -52,17 +72,3 @@
  *
  *
  */
-
-// @lc code=start
-function maxProfit(prices: number[]): number {
-	let minPrice = Infinity,
-		maxProfit = 0;
-
-	for (const price of prices) {
-		minPrice = Math.min(minPrice, price);
-		maxProfit = Math.max(maxProfit, price - minPrice);
-	}
-
-	return maxProfit;
-}
-// @lc code=end

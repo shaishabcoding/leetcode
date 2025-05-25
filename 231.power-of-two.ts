@@ -1,3 +1,17 @@
+// @lc code=start
+function isPowerOfTwo(n: number): boolean {
+	if (n === 1) return true;
+	if (n < 1 || n % 2 !== 0) return false;
+	return isPowerOfTwo(n / 2);
+}
+// @lc code=end
+
+console.log(isPowerOfTwo(1)); // true
+console.log(isPowerOfTwo(16)); // true
+console.log(isPowerOfTwo(3)); // false
+console.log(isPowerOfTwo(4)); // true
+console.log(isPowerOfTwo(5)); // false
+
 /*
  * @lc app=leetcode id=231 lang=typescript
  *
@@ -53,11 +67,3 @@
  *
  * Follow up: Could you solve it without loops/recursion?
  */
-
-// @lc code=start
-function isPowerOfTwo(n: number): boolean {
-	if (n === 1) return true;
-	if (n < 1 || n % 2 !== 0) return false;
-	return isPowerOfTwo(n / 2);
-}
-// @lc code=end

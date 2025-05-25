@@ -1,4 +1,22 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
+
+// @lc code=start
+function invertTree(root: TreeNode | null): TreeNode | null {
+	if (!root) return null;
+
+	const temp = root.left;
+	root.left = invertTree(root.right);
+	root.right = invertTree(temp);
+
+	return root;
+}
+// @lc code=end
+
+console.log(invertTree(TreeNode.fromArray([4, 2, 7, 1, 3, 6, 9]))); // [4,7,2,9,6,3,1]
+console.log(invertTree(TreeNode.fromArray([2, 1, 3]))); // [2,3,1]
+console.log(invertTree(TreeNode.fromArray([]))); // []
+console.log(invertTree(null)); // null
+console.log(invertTree(TreeNode.fromArray([1]))); // [1]
 
 /*
  * @lc app=leetcode id=226 lang=typescript
@@ -48,15 +66,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  *
  */
-
-// @lc code=start
-function invertTree(root: TreeNode | null): TreeNode | null {
-	if (!root) return null;
-
-	const temp = root.left;
-	root.left = invertTree(root.right);
-	root.right = invertTree(temp);
-
-	return root;
-}
-// @lc code=end

@@ -1,4 +1,61 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
+
+// @lc code=start
+function lowestCommonAncestor(
+	root: TreeNode | null,
+	p: TreeNode | null,
+	q: TreeNode | null
+): TreeNode | null {
+	if (!root || root === p || root === q) return root;
+
+	const left = lowestCommonAncestor(root.left, p, q);
+	const right = lowestCommonAncestor(root.right, p, q);
+
+	if (left && right) return root;
+
+	return left ?? right;
+}
+// @lc code=end
+
+console.log(
+	lowestCommonAncestor(
+		TreeNode.fromArray([6, 2, 8, 0, 4, 7, 9, null, null, 3, 5]),
+		TreeNode.fromArray([2]),
+		TreeNode.fromArray([8])
+	)
+); // 6
+
+console.log(
+	lowestCommonAncestor(
+		TreeNode.fromArray([6, 2, 8, 0, 4, 7, 9, null, null, 3, 5]),
+		TreeNode.fromArray([2]),
+		TreeNode.fromArray([4])
+	)
+); // 2
+
+console.log(
+	lowestCommonAncestor(
+		TreeNode.fromArray([2, 1]),
+		TreeNode.fromArray([2]),
+		TreeNode.fromArray([1])
+	)
+); // 2
+
+console.log(
+	lowestCommonAncestor(
+		TreeNode.fromArray([3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]),
+		TreeNode.fromArray([5]),
+		TreeNode.fromArray([4])
+	)
+); // 5
+
+console.log(
+	lowestCommonAncestor(
+		TreeNode.fromArray([3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]),
+		TreeNode.fromArray([5]),
+		TreeNode.fromArray([6])
+	)
+); // 5
 
 /*
  * @lc app=leetcode id=235 lang=typescript
@@ -60,20 +117,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  *
  */
-
-// @lc code=start
-function lowestCommonAncestor(
-	root: TreeNode | null,
-	p: TreeNode | null,
-	q: TreeNode | null
-): TreeNode | null {
-	if (!root || root === p || root === q) return root;
-
-	const left = lowestCommonAncestor(root.left, p, q);
-	const right = lowestCommonAncestor(root.right, p, q);
-
-	if (left && right) return root;
-
-	return left ?? right;
-}
-// @lc code=end

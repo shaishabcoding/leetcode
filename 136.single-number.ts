@@ -1,3 +1,21 @@
+// @lc code=start
+function singleNumber(nums: number[]): number {
+	let result = 0;
+
+	for (const num of nums) {
+		result ^= num;
+	}
+
+	return result;
+}
+// @lc code=end
+
+console.log(singleNumber([2, 2, 1])); // 1
+console.log(singleNumber([4, 1, 2, 1, 2])); // 4
+console.log(singleNumber([1])); // 1
+console.log(singleNumber([1, 2, 2])); // 1
+console.log(singleNumber([1, 1, 3])); // 3
+
 /*
  * @lc app=leetcode id=136 lang=typescript
  *
@@ -55,15 +73,3 @@
  *
  *
  */
-
-// @lc code=start
-function singleNumber(nums: number[]): number {
-	let result = 0;
-
-	for (const num of nums) {
-		result ^= num;
-	}
-
-	return result;
-}
-// @lc code=end

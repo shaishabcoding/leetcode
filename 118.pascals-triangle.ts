@@ -1,3 +1,27 @@
+// @lc code=start
+function generate(numRows: number): number[][] {
+	const triangle: number[][] = [];
+
+	for (let i = 0; i < numRows; i++) {
+		const row: number[] = new Array(i + 1).fill(1);
+
+		for (let j = 1; j < i; j++) {
+			row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+		}
+
+		triangle.push(row);
+	}
+
+	return triangle;
+}
+// @lc code=end
+
+console.log(generate(5)); // [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+console.log(generate(1)); // [[1]]
+console.log(generate(0)); // []
+console.log(generate(2)); // [[1],[1,1]]
+console.log(generate(3)); // [[1],[1,1],[1,2,1]]
+
 /*
  * @lc app=leetcode id=118 lang=typescript
  *
@@ -34,21 +58,3 @@
  *
  *
  */
-
-// @lc code=start
-function generate(numRows: number): number[][] {
-	const triangle: number[][] = [];
-
-	for (let i = 0; i < numRows; i++) {
-		const row: number[] = new Array(i + 1).fill(1);
-
-		for (let j = 1; j < i; j++) {
-			row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
-		}
-
-		triangle.push(row);
-	}
-
-	return triangle;
-}
-// @lc code=end

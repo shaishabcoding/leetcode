@@ -1,4 +1,27 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
+
+// @lc code=start
+function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
+	if (!root) return false;
+
+	const remaining = targetSum - root.val;
+
+	if (!root.left && !root.right) return remaining === 0;
+
+	return hasPathSum(root.left, remaining) || hasPathSum(root.right, remaining);
+}
+// @lc code=end
+
+console.log(
+	hasPathSum(
+		TreeNode.fromArray([5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1]),
+		22
+	)
+); // true
+console.log(hasPathSum(TreeNode.fromArray([1, 2, 3]), 5)); // false
+console.log(hasPathSum(null, 0)); // false
+console.log(hasPathSum(TreeNode.fromArray([]), 0)); // false
+console.log(hasPathSum(TreeNode.fromArray([1]), 1)); // true
 
 /*
  * @lc app=leetcode id=112 lang=typescript
@@ -59,15 +82,3 @@ import { TreeNode } from "./utils/TreeNode";
  *
  *
  */
-
-// @lc code=start
-function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
-	if (!root) return false;
-
-	const remaining = targetSum - root.val;
-
-	if (!root.left && !root.right) return remaining === 0;
-
-	return hasPathSum(root.left, remaining) || hasPathSum(root.right, remaining);
-}
-// @lc code=end

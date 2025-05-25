@@ -1,3 +1,21 @@
+// @lc code=start
+function containsDuplicate(nums: number[]): boolean {
+	const seen = new Set();
+
+	for (const num of nums)
+		if (seen.has(num)) return true;
+		else seen.add(num);
+
+	return false;
+}
+// @lc code=end
+
+console.log(containsDuplicate([1, 2, 3, 1])); // true
+console.log(containsDuplicate([1, 2, 3, 4])); // false
+console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); // true
+console.log(containsDuplicate([-1, 0, 1, 2, -1, -2])); // true
+console.log(containsDuplicate([0, 1, 2, 3, 4, 5])); // false
+
 /*
  * @lc app=leetcode id=217 lang=typescript
  *
@@ -58,15 +76,3 @@
  *
  *
  */
-
-// @lc code=start
-function containsDuplicate(nums: number[]): boolean {
-	const seen = new Set();
-
-	for (const num of nums)
-		if (seen.has(num)) return true;
-		else seen.add(num);
-
-	return false;
-}
-// @lc code=end

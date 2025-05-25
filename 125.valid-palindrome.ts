@@ -1,3 +1,27 @@
+// @lc code=start
+function isPalindrome(s: string): boolean {
+	s = s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+
+	let left = 0;
+	let right = s.length - 1;
+
+	while (left < right) {
+		if (s[left] !== s[right]) return false;
+
+		left++;
+		right--;
+	}
+
+	return true;
+}
+// @lc code=end
+
+console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
+console.log(isPalindrome("Not a palindrome")); // false
+console.log(isPalindrome("Was it a car or a cat I saw?")); // true
+console.log(isPalindrome("No 'x' in Nixon")); // true
+console.log(isPalindrome("0P")); // false
+
 /*
  * @lc app=leetcode id=125 lang=typescript
  *
@@ -57,21 +81,3 @@
  *
  *
  */
-
-// @lc code=start
-function isPalindrome(s: string): boolean {
-	s = s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
-
-	let left = 0;
-	let right = s.length - 1;
-
-	while (left < right) {
-		if (s[left] !== s[right]) return false;
-
-		left++;
-		right--;
-	}
-
-	return true;
-}
-// @lc code=end

@@ -1,4 +1,4 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
 
 // @lc code=start
 function isMirror(tree1: TreeNode | null, tree2: TreeNode | null): boolean {

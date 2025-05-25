@@ -1,4 +1,27 @@
-import { TreeNode } from "./utils/TreeNode";
+import { TreeNode } from "./utils";
+
+// @lc code=start
+function preorderTraversal(root: TreeNode | null): number[] {
+	const result: number[] = [];
+
+	function traverse(node: TreeNode | null) {
+		if (node === null) return;
+
+		result.push(node.val);
+		traverse(node.left);
+		traverse(node.right);
+	}
+
+	traverse(root);
+	return result;
+}
+// @lc code=end
+
+console.log(preorderTraversal(TreeNode.fromArray([1, null, 2, 3]))); // [1, 2, 3]
+console.log(preorderTraversal(TreeNode.fromArray([1]))); // [1]
+console.log(preorderTraversal(TreeNode.fromArray([1, 2]))); // [1, 2]
+console.log(preorderTraversal(TreeNode.fromArray([1, null, 2]))); // [1, 2]
+console.log(preorderTraversal(TreeNode.fromArray([]))); // []
 
 /*
  * @lc app=leetcode id=144 lang=typescript
@@ -71,20 +94,3 @@ import { TreeNode } from "./utils/TreeNode";
  * Follow up: Recursive solution is trivial, could you do it iteratively?
  *
  */
-
-// @lc code=start
-function preorderTraversal(root: TreeNode | null): number[] {
-	const result: number[] = [];
-
-	function traverse(node: TreeNode | null) {
-		if (node === null) return;
-
-		result.push(node.val);
-		traverse(node.left);
-		traverse(node.right);
-	}
-
-	traverse(root);
-	return result;
-}
-// @lc code=end

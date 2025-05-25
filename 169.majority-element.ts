@@ -1,3 +1,27 @@
+// @lc code=start
+function majorityElement(nums: number[]): number {
+	const map: Record<number, number> = {};
+
+	let max = nums[0];
+
+	for (const num of nums) {
+		map[num] = (map[num] || 0) + 1;
+
+		if (map[num] > map[max]) {
+			max = num;
+		}
+	}
+
+	return max;
+}
+// @lc code=end
+
+console.log(majorityElement([2, 2, 1, 1, 1, 2, 2])); // 2
+console.log(majorityElement([3, 2, 3])); // 3
+console.log(majorityElement([1, 1, 1, 3, 3, 2, 2, 2])); // 1
+console.log(majorityElement([1])); // 1
+console.log(majorityElement([1, 2])); // 1
+
 /*
  * @lc app=leetcode id=169 lang=typescript
  *
@@ -38,21 +62,3 @@
  *
  * Follow-up: Could you solve the problem in linear time and in O(1) space?
  */
-
-// @lc code=start
-function majorityElement(nums: number[]): number {
-	const map = {};
-
-	let max = nums[0];
-
-	for (const num of nums) {
-		map[num] = (map[num] || 0) + 1;
-
-		if (map[num] > map[max]) {
-			max = num;
-		}
-	}
-
-	return max;
-}
-// @lc code=end
