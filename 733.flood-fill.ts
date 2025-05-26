@@ -10,26 +10,33 @@ function floodFill(
 	const oldColor = image[sr][sc];
 	const rowLength = image.length;
 	const colLength = image[0].length;
+	const queue: [number, number][] = [[sr, sc]];
+	const directions = [
+		[-1, 0], // top
+		[1, 0], // bottom
+		[0, -1], // left
+		[0, 1], // right
+	];
 
-	function dfs(row: number, col: number) {
-		if (
-			row < 0 ||
-			row >= rowLength ||
-			col < 0 ||
-			col >= colLength ||
-			image[row][col] !== oldColor
-		)
-			return;
+	while (queue.length) {
+		const [row, col] = queue.shift()!;
 
 		image[row][col] = color;
 
-		dfs(row - 1, col); // top
-		dfs(row + 1, col); // bottom
-		dfs(row, col - 1); // left
-		dfs(row, col + 1); // right
-	}
+		for (const [dRow, dCol] of directions) {
+			const newRow = dRow + row;
+			const newCol = dCol + col;
 
-	dfs(sr, sc);
+			if (
+				newRow >= 0 &&
+				newRow < rowLength &&
+				newCol >= 0 &&
+				newCol < colLength &&
+				image[newRow][newCol] === oldColor
+			)
+				queue.push([newRow, newCol]);
+		}
+	}
 
 	return image;
 }
@@ -92,6 +99,85 @@ console.log(
 		0
 	)
 ); // [[0,0,0],[0,0,0]]
+
+//! using dfc
+// function floodFill(
+// 	image: number[][],
+// 	sr: number,
+// 	sc: number,
+// 	color: number
+// ): number[][] {
+// 	if (image[sr][sc] === color) return image;
+
+// 	const oldColor = image[sr][sc];
+// 	const rowLength = image.length;
+// 	const colLength = image[0].length;
+
+// 	function dfs(row: number, col: number) {
+// 		if (
+// 			row < 0 ||
+// 			row >= rowLength ||
+// 			col < 0 ||
+// 			col >= colLength ||
+// 			image[row][col] !== oldColor
+// 		)
+// 			return;
+
+// 		image[row][col] = color;
+
+// 		dfs(row - 1, col); // top
+// 		dfs(row + 1, col); // bottom
+// 		dfs(row, col - 1); // left
+// 		dfs(row, col + 1); // right
+// 	}
+
+// 	dfs(sr, sc);
+
+// 	return image;
+// }
+
+//! using bfs
+// function floodFill(
+// 	image: number[][],
+// 	sr: number,
+// 	sc: number,
+// 	color: number
+// ): number[][] {
+// 	if (image[sr][sc] === color) return image;
+
+// 	const oldColor = image[sr][sc];
+// 	const rowLength = image.length;
+// 	const colLength = image[0].length;
+// 	const queue: [number, number][] = [[sr, sc]];
+// 	const directions = [
+// 		[-1, 0], // top
+// 		[1, 0], // bottom
+// 		[0, -1], // left
+// 		[0, 1], // right
+// 	];
+
+// 	while (queue.length) {
+// 		const [row, col] = queue.shift()!;
+
+// 		image[row][col] = color;
+
+// 		for (const [dRow, dCol] of directions) {
+// 			const newRow = dRow + row;
+// 			const newCol = dCol + col;
+
+// 			if (
+// 				newRow >= 0 &&
+// 				newRow < rowLength &&
+// 				newCol >= 0 &&
+// 				newCol < colLength &&
+// 				image[newRow][newCol] === oldColor
+// 			)
+// 				queue.push([newRow, newCol]);
+// 		}
+// 	}
+
+// 	return image;
+// }
 
 /*
  * @lc app=leetcode id=733 lang=typescript
