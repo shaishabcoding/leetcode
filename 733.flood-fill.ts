@@ -6,17 +6,30 @@ function floodFill(
 	color: number
 ): number[][] {
 	if (image[sr][sc] === color) return image;
-	const oldColor = image[sr][sc];
-	image[sr][sc] = color;
-	if (sr > 0 && image[sr - 1][sc] === oldColor)
-		floodFill(image, sr - 1, sc, color);
-	if (sr < image.length - 1 && image[sr + 1][sc] === oldColor)
-		floodFill(image, sr + 1, sc, color);
 
-	if (sc > 0 && image[sr][sc - 1] === oldColor)
-		floodFill(image, sr, sc - 1, color);
-	if (sc < image[0].length - 1 && image[sr][sc + 1] === oldColor)
-		floodFill(image, sr, sc + 1, color);
+	const oldColor = image[sr][sc];
+	const rowLength = image.length;
+	const colLength = image[0].length;
+
+	function dfs(row: number, col: number) {
+		if (
+			row < 0 ||
+			row >= rowLength ||
+			col < 0 ||
+			col >= colLength ||
+			image[row][col] !== oldColor
+		)
+			return;
+
+		image[row][col] = color;
+
+		dfs(row - 1, col); // top
+		dfs(row + 1, col); // bottom
+		dfs(row, col - 1); // left
+		dfs(row, col + 1); // right
+	}
+
+	dfs(sr, sc);
 
 	return image;
 }
