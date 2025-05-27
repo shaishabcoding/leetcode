@@ -3,8 +3,7 @@ function differenceOfSums(n: number, m: number): number {
 	let result = 0;
 
 	for (let i = 1; i <= n; i++) {
-		if (i % m) result += i;
-		else result -= i;
+		result += i % m ? i : -i;
 	}
 
 	return result;
