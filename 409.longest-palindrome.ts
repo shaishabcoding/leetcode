@@ -2,7 +2,7 @@
 function longestPalindrome(str: string): number {
 	const charMap: Record<string, number> = {};
 
-	for (const char of str) charMap[char] = (charMap[char] || 0) + 1;
+	for (const char of str) charMap[char] = -~charMap[char];
 
 	let maxLength = 0;
 	let carry: 0 | 1 = 0; // carry for odd value
