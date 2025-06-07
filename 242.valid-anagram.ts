@@ -2,16 +2,16 @@
 function isAnagram(s: string, t: string): boolean {
 	if (s.length !== t.length) return false;
 
-	const count = new Array(26).fill(0);
+	const count = new Int32Array(26);
+	let balance = 0;
 
 	for (let i = s.length; i--; ) {
-		count[s.charCodeAt(i) - 97]++;
-		count[t.charCodeAt(i) - 97]--;
+		if (++count[s.charCodeAt(i) - 97] === 1) balance++;
+		if (--count[t.charCodeAt(i) - 97] === 0) balance--;
+		if (balance < 0) return false;
 	}
 
-	for (const c of count) if (c !== 0) return false;
-
-	return true;
+	return !balance;
 }
 // @lc code=end
 
