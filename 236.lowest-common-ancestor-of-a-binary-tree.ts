@@ -10,9 +10,7 @@ function lowestCommonAncestor(
 	const left = lowestCommonAncestor(root.left, p, q);
 	const right = lowestCommonAncestor(root.right, p, q);
 
-	if (left && right) return root;
-
-	return left ?? right;
+	return left && right ? root : left ?? right;
 }
 // @lc code=end
 
