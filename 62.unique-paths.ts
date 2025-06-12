@@ -1,12 +1,11 @@
 // @lc code=start
 function uniquePaths(m: number, n: number): number {
-	let totalSteps = m + n - 1;
-	let k = m < n ? m : n;
+	let [max, min] = [m, n].sort();
 	let result = 1;
 
-	for (let i = 1; i < k; i++) result = (result * (totalSteps - k + i)) / i;
+	for (let i = min; --i; ) result *= (max + i - 1) / i;
 
-	return result;
+	return (result + 0.5) | 0;
 }
 // @lc code=end
 
