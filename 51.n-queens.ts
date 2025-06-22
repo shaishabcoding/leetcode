@@ -19,18 +19,14 @@ function solveNQueens(n: number): string[][] {
 	}
 
 	function backtrack(row: number): void {
-		if (row === n) {
-			result.push(board.map((rowArr) => rowArr.join("")));
-			return;
-		}
-
-		for (let col = 0; col < n; col++) {
-			if (isSafe(row, col)) {
-				board[row][col] = "Q";
-				backtrack(row + 1);
-				board[row][col] = "."; // backtrack
-			}
-		}
+		if (row === n) result.push(board.map((rowArr) => rowArr.join("")));
+		else
+			for (let col = 0; col < n; col++)
+				if (isSafe(row, col)) {
+					board[row][col] = "Q";
+					backtrack(row + 1);
+					board[row][col] = "."; // backtrack
+				}
 	}
 
 	backtrack(0);
