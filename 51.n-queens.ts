@@ -1,32 +1,34 @@
 // @lc code=start
 function solveNQueens(n: number): string[][] {
 	const result: string[][] = [];
-	const board: string[][] = Array.from({ length: n }, () => Array(n).fill("."));
+	const queens: number[] = new Array(n);
 
 	function isSafe(row: number, col: number): boolean {
-		// Check the column above
-		for (let i = 0; i < row; i++) if (board[i][col] === "Q") return false;
-
-		// Check upper left diagonal
-		for (let i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--)
-			if (board[i][j] === "Q") return false;
-
-		// Check upper right diagonal
-		for (let i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++)
-			if (board[i][j] === "Q") return false;
-
+		for (let r = 0; r < row; r++) {
+			const c = queens[r];
+			if (
+				c === col /* column */ ||
+				row - r === Math.abs(col - c) /* diagonal */
+			)
+				return false;
+		}
 		return true;
 	}
 
 	function backtrack(row: number): void {
-		if (row === n) result.push(board.map((rowArr) => rowArr.join("")));
-		else
-			for (let col = 0; col < n; col++)
-				if (isSafe(row, col)) {
-					board[row][col] = "Q";
-					backtrack(row + 1);
-					board[row][col] = "."; // backtrack
-				}
+		if (row === n) {
+			result.push(
+				queens.map((col) => ".".repeat(col) + "Q" + ".".repeat(n - col - 1))
+			);
+			return;
+		}
+
+		for (let col = 0; col < n; col++) {
+			if (isSafe(row, col)) {
+				queens[row] = col;
+				backtrack(row + 1);
+			}
+		}
 	}
 
 	backtrack(0);
