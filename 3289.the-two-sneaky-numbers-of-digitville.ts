@@ -9,7 +9,7 @@ function getSneakyNumbers(nums: number[]): number[] {
 }
 // @lc code=end
 
-console.log(getSneakyNumbers([2, 0, 1, 2, 1]));
+console.log(getSneakyNumbers([2, 0, 1, 2, 1])); // [1, 2];
 
 /*
  * @lc app=leetcode id=3289 lang=typescript
