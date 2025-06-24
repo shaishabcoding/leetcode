@@ -1,10 +1,9 @@
 // @lc code=start
 function getSneakyNumbers(nums: number[]): number[] {
 	const result: number[] = [];
-	nums.sort();
 
-	for (let i = 0; i < nums.length; i++)
-		if (nums[i] === nums[i + 1]) result.push(nums[i++]);
+	for (let i = nums.length; --i; )
+		if (i !== nums.indexOf(nums[i])) result.push(nums[i]);
 
 	return result;
 }
