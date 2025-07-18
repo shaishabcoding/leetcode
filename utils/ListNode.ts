@@ -1,5 +1,8 @@
 export class ListNode {
-	constructor(public val = 0, public next: ListNode | null = null) {}
+	constructor(
+		public val: number | null | undefined = 0,
+		public next: ListNode | null | undefined = null
+	) {}
 
 	static fromArray(arr: number[]): ListNode | null {
 		if (arr.length === 0) return null;

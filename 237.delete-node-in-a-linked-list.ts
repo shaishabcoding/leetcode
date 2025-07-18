@@ -1,13 +1,13 @@
 import { ListNode } from "./utils";
 
 // @lc code=start
-function deleteNode(node: ListNode | null): void {
+function deleteNode(node: ListNode): void {
 	node.val = node?.next?.val;
 	node.next = node?.next?.next;
 }
 // @lc code=end
 
-console.log(deleteNode(ListNode.fromArray([4, 5, 1, 9]))); // [4,1,9]
+console.log(deleteNode(ListNode.fromArray([4, 5, 1, 9])!)); // [4,1,9]
 
 /*
  * @lc app=leetcode id=237 lang=typescript
